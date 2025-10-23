@@ -1,4 +1,5 @@
+import { BASE_TITLE } from './constants'
+
 export function title (title: string = '') {
-  const baseTitle = 'Nintendo Switch 2'
-  return title ? `${title} - ${baseTitle}` : baseTitle
+  return title ? `${title} - ${BASE_TITLE}` : BASE_TITLE
 }
