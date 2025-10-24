@@ -1,4 +1,4 @@
-import { PROJECT_DESCRIPTION } from '~/lib/constants'
+import { PROJECT_DESCRIPTION } from '~/lib/constants/project'
 import type { Route } from './+types/startup'
 import { title } from '~/lib/utils'
 import { useSwitchStore } from '~/stores/useSwitchStore'
