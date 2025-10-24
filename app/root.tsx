@@ -43,7 +43,7 @@ export function Layout ({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className='relative flex items-center justify-center'>
+      <body className='relative'>
         {children}
         <ScrollRestoration />
         <Scripts />
