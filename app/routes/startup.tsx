@@ -49,7 +49,10 @@ export default function Startup () {
   }, [isConsoleOn])
   
   return (
-    <main id='camera' className='absolute z-1 w-[52.75vw] aspect-[16/10] mr-[0.5vw] mt-[2vh] flex items-center justify-center bg-black'>
+    <main
+      id='camera'
+      className='absolute left-[317px] top-[56px] z-1 w-181 h-[450.5px] flex items-center justify-center bg-[#1A1A1A] [&>*]:animate-fade-in [&>*]:animate-delay-300 [&>*]:animate-duration-200'
+    >
       <button
         className='absolute h-full w-full cursor-pointer outline-0 z-2'
         onClick={handleToggleConsoleState}
