@@ -21,13 +21,11 @@ export default function Home () {
   const cameraRef = useRef<HTMLElement>(null)
 
   async function loadMap () {
-    // const map = new FocusMap()
-  }
-  
-  function loadSectionProfiles () {
-    // VirtualSectionProfiles
-    // VisualSectionProfiles
-    
+    const camera = cameraRef.current
+    if (!camera) return
+
+    const map = new FocusMap(VIRTUAL_MAPS.HOME)
+    console.log(map)
   }
   
   useEffect(() => {
