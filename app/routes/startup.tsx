@@ -2,7 +2,8 @@ import { PROJECT_DESCRIPTION } from '~/lib/constants'
 import type { Route } from './+types/startup'
 import { title } from '~/lib/utils'
 import { useSwitchStore } from '~/stores/useSwitchStore'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type SyntheticEvent } from 'react'
+import { useNavigate } from 'react-router'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -12,6 +13,8 @@ export function meta ({}: Route.MetaArgs) {
 }
 
 export default function Startup () {
+  const navigate = useNavigate()
+  
   const isConsoleOn = useSwitchStore((state) => state.isConsoleOn)
   const setIsConsoleOn = useSwitchStore((state) => state.setIsConsoleOn)
   
@@ -21,6 +24,18 @@ export default function Startup () {
     setIsConsoleOn(true)
   }
 
+  function handleStartupVideoTimeUpdate (event: SyntheticEvent<HTMLVideoElement>) {
+    const video = event.currentTarget
+    const { currentTime } = video
+
+    // TO REMOVE: Esto es para acelerar tiempos por ahora
+    if (currentTime < 5) video.currentTime = 5
+  }
+
+  function handleStartupVideoEnded () {
+    navigate('/home')
+  }
+
   useEffect(() => {
     if (!isConsoleOn) return
     const startupVideo = startupVideoRef.current
@@ -28,9 +43,9 @@ export default function Startup () {
     if (!startupVideo) return
 
     // Simular demora de encendido
-    setTimeout(() => {
+    // setTimeout(() => {
       startupVideo.play()
-    }, 2000)
+    // }, 2000)
   }, [isConsoleOn])
   
   return (
@@ -45,8 +60,10 @@ export default function Startup () {
       <section className='h-full w-full flex items-center justify-center bg-[#1A1A1A]'>
         <video
           ref={startupVideoRef}
-          src='/switchui/movies/intro-with-audio.mp4'
-          className='object-contain'
+          src='/switchui/movies/startup-without-audio.mp4'
+          className='object-cover w-full h-full'
+          onTimeUpdate={handleStartupVideoTimeUpdate}
+          onEnded={handleStartupVideoEnded}
         />
       </section>
     </main>
