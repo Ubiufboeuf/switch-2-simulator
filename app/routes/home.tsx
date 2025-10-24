@@ -38,8 +38,8 @@ export default function Home () {
       id='camera'
       className='absolute left-[317px] top-[56px] z-1 w-181 h-[450.5px] flex items-center justify-center bg-[#1A1A1A] [&>*]:animate-fade-in [&>*]:animate-delay-300 [&>*]:animate-duration-200'
     >
-      <div className='absolute'>
-        <img src='/switchui/images/home-semi-loaded.png' />
+      <div className='absolute -z-1'>
+        <img src='/switchui/images/home-semi-loaded.png' className='opacity-20' />
       </div>
       <SectionProfiles />
       <SectionTopInfo />
