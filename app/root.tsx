@@ -33,7 +33,12 @@ export function Layout ({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className='relative flex items-center justify-center'>
-        {children}
+        <div className='w-400'>
+          <img src='/console.svg' className='w-full' />
+        </div>
+        <main id='screen' className='absolute z-1 w-211 max-w-[53vw] aspect-[16/10] mr-[0.4vw] mt-[1.5vh] flex items-center justify-center bg-black'>
+          {children}
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>
