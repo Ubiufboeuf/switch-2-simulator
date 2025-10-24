@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
+import { useAudioStore } from '~/stores/useAudioStore'
 
 export function useAudioHook () {
-  const audioRef = useRef<HTMLAudioElement>(null)
+  const { audio, setAudio } = useAudioStore((state) => state)
 
   useEffect(() => {
-    const audio = new Audio()
-    audioRef.current = audio
-  }, [])
+    if (!audio) {
+      setAudio(new Audio())
+    }
+  }, [audio])
 }
