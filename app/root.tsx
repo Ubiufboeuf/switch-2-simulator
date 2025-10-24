@@ -4,12 +4,14 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useLocation
 } from 'react-router'
 
 import type { Route } from './+types/root'
 import './app.css'
 import { useAudioHook } from './hooks/useAudioHook'
+import { useEffect } from 'react'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -27,6 +29,12 @@ export const links: Route.LinksFunction = () => [
 export function Layout ({ children }: { children: React.ReactNode }) {
   useAudioHook()
 
+  const location = useLocation()
+
+  useEffect(() => {
+    console.log(location)
+  }, [location])
+  
   return (
     <html lang='es'>
       <head>
@@ -40,7 +48,7 @@ export function Layout ({ children }: { children: React.ReactNode }) {
           <img src='/console.svg' className='w-full' />
         </div>
         <a href='/' className='absolute left-[14.6%] top-[68.1%] w-[5.3%] h-[5.8%] rounded-full transition-colors hover:bg-neutral-300/10 text-blue-400 hover:text-blue-500'></a>
-          {children}
+        {children}
         <ScrollRestoration />
         <Scripts />
       </body>
