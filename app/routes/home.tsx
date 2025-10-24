@@ -12,22 +12,24 @@ export function meta ({}: Route.MetaArgs) {
 export default function Home () {
   const cameraRef = useRef<HTMLElement>(null)
 
-  async function loadBoxesMap () {
+  async function loadMap () {
     // const map = new FocusMap()
   }
   
-  function loadBoxProfiles () {
+  function loadSectionProfiles () {
+    // VirtualSectionProfiles
+    // VisualSectionProfiles
     
   }
   
   useEffect(() => { (async () => {
-    await loadBoxesMap()
-    loadBoxProfiles()
-    // loadBoxTopInfo()
-    // loadBoxGames()
-    // loadBoxNavigation()
-    // loadBoxControls()
-    // loadBoxButtons()
+    await loadMap()
+    loadSectionProfiles()
+    // loadSectionTopInfo()
+    // loadSectionGames()
+    // loadSectionNavigation()
+    // loadSectionControls()
+    // loadSectionButtons()
   })() }, [])
   
   return (
