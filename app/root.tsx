@@ -36,9 +36,8 @@ export function Layout ({ children }: { children: React.ReactNode }) {
         <div className='w-full'>
           <img src='/console.svg' className='w-full' />
         </div>
-        <main id='screen' className='absolute z-1 w-[52.75vw] aspect-[16/10] mr-[0.5vw] mt-[2vh] flex items-center justify-center bg-black'>
+        <a href='/' className='absolute left-[14.6%] top-[68.1%] w-[5.3%] h-[5.8%] rounded-full transition-colors hover:bg-neutral-300/10 text-blue-400 hover:text-blue-500'></a>
           {children}
-        </main>
         <ScrollRestoration />
         <Scripts />
       </body>
