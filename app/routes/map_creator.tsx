@@ -22,7 +22,7 @@ export default function MapCreator () {
             </button>
           </div>
           <div ref={itemsRef} className='overflow-y-auto px-12 h-[calc(100%-88px)] [scrollbar-width:thin]'>
-            <div className='h-fit min-h-fit gap-2 flex flex-col'>
+            <div className='h-fit min-h-fit gap-2 pb-8 flex flex-col'>
               {
                 items.map((section) => (
                   <CreatorSection
