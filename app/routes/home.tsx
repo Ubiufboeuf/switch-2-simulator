@@ -10,7 +10,7 @@ export function meta ({}: Route.MetaArgs) {
 }
 
 export default function Home () {
-  const screenRef = useRef<HTMLElement>(null)
+  const cameraRef = useRef<HTMLElement>(null)
 
   async function loadBoxesMap () {
     // const map = new FocusMap()
@@ -32,8 +32,8 @@ export default function Home () {
   
   return (
     <main
-      ref={screenRef}
-      id='screen'
+      ref={cameraRef}
+      id='camera'
       className='absolute z-1 w-[52.75vw] aspect-[16/10] mr-[0.5vw] mt-[2vh] flex items-center justify-center bg-[#1A1A1A] [&>*]:animate-fade-in [&>*]:animate-delay-300 [&>*]:animate-duration-200'
     >
       <div className='absolute'>
