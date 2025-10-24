@@ -16,7 +16,7 @@ export function CreatorSection ({ section }: { section: Section }) {
 
     const newSection: Section = {
       id: section.id,
-      name: value || section.id,
+      name: value || section.name,
       items: section.items,
       orientation: section.orientation
     }

@@ -54,7 +54,7 @@ export const useCreatorStore = create<CreatorStore>((set, get) => ({
       name: section.name,
       items: section.items.map((box) => ({
         id: box.id,
-        parentId: section.name,
+        parentId: section.id,
         topology: box.topology
       })),
       orientation: section.orientation
@@ -100,15 +100,12 @@ export const useCreatorStore = create<CreatorStore>((set, get) => ({
     const sectionIdx = sections.findIndex((s) => s.id === sectionId)
     const section = sections[sectionIdx]
 
-    // const boxIdx = section.items.findIndex((b) => b.id === box.id)
-    console.log(box.topology)
-
     sections.splice(sectionIdx, 1, {
       id: section.id,
       name: section.name,
       items: section.items.map((b) => ({
         id: b.id,
-        parentId: section.name,
+        parentId: section.id,
         topology: box.id === b.id ? box.topology : b.topology
       })),
       orientation: section.orientation
