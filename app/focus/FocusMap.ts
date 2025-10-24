@@ -7,7 +7,21 @@ export type FocusNode = {
   right: string
 }
 
-export type MapStructure = (string | null)[][]
+export type MapStructure = {
+  id: string
+  name: string
+  items: {
+    id: string
+    parentId: string
+    topology: {
+      down: string
+      left: string
+      right: string
+      up: string
+    }
+  }[]
+  orientation: string
+}[]
 
 export class FocusMap {
   // Guarda todas las secciones: {'sectionA': Section, 'sectionB': Section, ...}
