@@ -9,6 +9,7 @@ import {
 
 import type { Route } from './+types/root'
 import './app.css'
+import { useAudioHook } from './hooks/useAudioHook'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -24,6 +25,8 @@ export const links: Route.LinksFunction = () => [
 ]
 
 export function Layout ({ children }: { children: React.ReactNode }) {
+  useAudioHook()
+
   return (
     <html lang='es'>
       <head>
