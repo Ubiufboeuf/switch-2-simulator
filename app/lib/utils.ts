@@ -1,4 +1,4 @@
-import { BASE_TITLE } from './constants'
+import { BASE_TITLE } from './constants/project'
 
 export function handleTitle (title: string = '') {
   return title ? `${title} - ${BASE_TITLE}` : BASE_TITLE
