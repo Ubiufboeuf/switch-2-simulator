@@ -1,6 +1,8 @@
 import { PROJECT_DESCRIPTION } from '~/lib/constants'
 import type { Route } from './+types/startup'
 import { title } from '~/lib/utils'
+import { useSwitchStore } from '~/stores/useSwitchStore'
+import { useEffect, useRef } from 'react'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -10,7 +12,43 @@ export function meta ({}: Route.MetaArgs) {
 }
 
 export default function Startup () {
+  const isConsoleOn = useSwitchStore((state) => state.isConsoleOn)
+  const setIsConsoleOn = useSwitchStore((state) => state.setIsConsoleOn)
+  
+  const startupVideoRef = useRef<HTMLVideoElement | null>(null)
+
+  function handleToggleConsoleState () {
+    setIsConsoleOn(true)
+  }
+
+  useEffect(() => {
+    if (!isConsoleOn) return
+    const startupVideo = startupVideoRef.current
+
+    if (!startupVideo) return
+
+    // Simular demora de encendido
+    setTimeout(() => {
+      startupVideo.play()
+    }, 2000)
+  }, [isConsoleOn])
+  
   return (
-    'startup'
+    <>
+      <button
+        className='absolute h-full w-full cursor-pointer outline-0 z-2'
+        onClick={handleToggleConsoleState}
+        hidden={isConsoleOn}
+      >
+        Toca la pantalla para encender la consola
+      </button>
+      <section className='h-full w-full flex items-center justify-center bg-[#1A1A1A]'>
+        <video
+          ref={startupVideoRef}
+          src='/switchui/movies/intro-with-audio.mp4'
+          className='object-contain'
+        />
+      </section>
+    </>
   )
 }
