@@ -1,6 +1,14 @@
 import { title } from '~/lib/utils'
 import type { Route } from './+types/home'
 import { useEffect, useRef } from 'react'
+import { FocusMap } from '~/focus/FocusMap'
+import { VIRTUAL_MAPS } from '~/lib/constants'
+import { SectionProfiles } from '~/compontents/home/SectionProfiles'
+import { SectionTopInfo } from '~/compontents/home/SectionTopInfo'
+import { SectionGames } from '~/compontents/home/SectionGames'
+import { SectionNavigation } from '~/compontents/home/SectionNavigation'
+import { SectionControls } from '~/compontents/home/SectionControls'
+import { SectionButtons } from '~/compontents/home/SectionButtons'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -22,15 +30,9 @@ export default function Home () {
     
   }
   
-  useEffect(() => { (async () => {
-    await loadMap()
-    loadSectionProfiles()
-    // loadSectionTopInfo()
-    // loadSectionGames()
-    // loadSectionNavigation()
-    // loadSectionControls()
-    // loadSectionButtons()
-  })() }, [])
+  useEffect(() => {
+    loadMap()
+  }, [])
   
   return (
     <main
@@ -41,6 +43,12 @@ export default function Home () {
       <div className='absolute'>
         <img src='/switchui/images/home-semi-loaded.png' />
       </div>
+      <SectionProfiles />
+      <SectionTopInfo />
+      <SectionGames />
+      <SectionNavigation />
+      <SectionControls />
+      <SectionButtons />
     </main>
   )
 }
