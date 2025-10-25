@@ -9,7 +9,7 @@ import {
 
 import type { Route } from './+types/root'
 import './app.css'
-import { useAudioHook } from './hooks/useAudioHook'
+import { useAudio } from './hooks/useAudio'
 import { useEffect } from 'react'
 
 export const links: Route.LinksFunction = () => [
@@ -26,7 +26,7 @@ export const links: Route.LinksFunction = () => [
 ]
 
 export function Layout ({ children }: { children: React.ReactNode }) {
-  useAudioHook()
+  useAudio()
 
   const location = useLocation()
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useAudioStore } from '~/stores/useAudioStore'
 
-export function useAudioHook () {
+export function useAudio () {
   const { audio, setAudio } = useAudioStore((state) => state)
 
   useEffect(() => {
