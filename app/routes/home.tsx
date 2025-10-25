@@ -25,7 +25,7 @@ export default function Home () {
     if (!camera) return
 
     const map = new FocusMap(VIRTUAL_MAPS.HOME)
-    console.log(map)
+    // console.log(map)
   }
   
   useEffect(() => {

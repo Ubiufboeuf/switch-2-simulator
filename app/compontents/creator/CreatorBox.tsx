@@ -10,7 +10,7 @@ export function CreatorBox ({ box }: { box: Box }) {
     return function (event: ChangeEvent<HTMLSelectElement>) {
       const { value } = event.currentTarget
       
-      console.log(value, direction)
+      // console.log(value, direction)
 
       const newTopology: typeof topology = {
         ...topology,

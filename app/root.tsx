@@ -31,7 +31,7 @@ export function Layout ({ children }: { children: React.ReactNode }) {
   const location = useLocation()
 
   useEffect(() => {
-    console.log(location)
+    // console.log(location)
   }, [location])
   
   return (
