@@ -1,3 +1,4 @@
+import type { Box } from '~/stores/useCreatorStore'
 import type { Section } from './Section'
 
 export type FocusNode = {
@@ -10,16 +11,7 @@ export type FocusNode = {
 export type MapStructure = {
   id: string
   name: string
-  items: {
-    id: string
-    parentId: string
-    topology: {
-      down: string
-      left: string
-      right: string
-      up: string
-    }
-  }[]
+  items: Box[]
   orientation: string
 }[]
 
