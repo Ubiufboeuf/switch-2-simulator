@@ -30,7 +30,9 @@ export default defineConfig([
       '@typescript-eslint/consistent-type-imports': 'error',
       'space-before-function-paren': ['error', 'always'],
       'react/no-unknown-property': ['error', { ignore: ['class'] }],
-      '@stylistic/arrow-parens': ['error', 'always']
+      '@stylistic/arrow-parens': ['error', 'always'],
+      'no-unused-vars': ['warn'],
+      '@typescript-eslint/no-unused-vars': ['warn']
     }
   }
 ])
