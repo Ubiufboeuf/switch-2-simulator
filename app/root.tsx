@@ -4,7 +4,6 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
   useLocation
 } from 'react-router'
 
@@ -45,7 +44,6 @@ export function Layout ({ children }: { children: React.ReactNode }) {
       </head>
       <body className='relative'>
         {children}
-        <ScrollRestoration />
         <Scripts />
       </body>
     </html>
