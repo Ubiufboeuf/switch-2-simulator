@@ -4,3 +4,5 @@ export type Dimensions = {
   height: string
   width: string
 }
+
+export type BoxElement = HTMLElement | HTMLDivElement

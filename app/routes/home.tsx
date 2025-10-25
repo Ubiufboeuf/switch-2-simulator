@@ -9,6 +9,7 @@ import { SectionGames } from '~/compontents/home/SectionGames'
 import { SectionNavigation } from '~/compontents/home/SectionNavigation'
 import { SectionControls } from '~/compontents/home/SectionControls'
 import { SectionButtons } from '~/compontents/home/SectionButtons'
+import { Cursor } from '~/compontents/Cursor'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -41,6 +42,7 @@ export default function Home () {
       <div className='absolute -z-1'>
         <img src='/switchui/images/home-load-finished.png' className='opacity-20' />
       </div>
+      <Cursor />
       <SectionProfiles />
       <SectionTopInfo />
       <SectionGames />
