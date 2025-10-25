@@ -11,6 +11,7 @@ import type { Route } from './+types/root'
 import './app.css'
 import { useAudio } from './hooks/useAudio'
 import { useEffect } from 'react'
+import { DebugPanel } from './compontents/debug/DebugPanel'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -43,6 +44,7 @@ export function Layout ({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className='relative'>
+        <DebugPanel />
         {children}
         <Scripts />
       </body>
