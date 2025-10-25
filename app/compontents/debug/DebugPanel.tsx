@@ -1,13 +1,8 @@
-import { useEffect } from 'react'
 import { useDebugStore } from '~/stores/useDebugData'
 
 export function DebugPanel () {
   const isPanelVisible = useDebugStore((state) => state.isPanelVisible)
   const debugData = useDebugStore((state) => state.debugData)
-
-  useEffect(() => {
-    console.log(isPanelVisible)
-  }, [isPanelVisible])
 
   return (
     <dialog
