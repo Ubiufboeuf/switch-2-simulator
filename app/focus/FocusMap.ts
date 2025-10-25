@@ -26,7 +26,7 @@ export class FocusMap {
   private sectionMemory: Map<string, string> = new Map()
 
   constructor (structure: MapStructure) {
-    console.log('FocusMap', structure)
+    // console.log('FocusMap', structure)
   }
 
   getRestoredFocusId (sectionId: string) {
