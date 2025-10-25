@@ -1,5 +1,5 @@
-import { Avatar } from '../Icons/Avatar'
-import { Icon } from '../Icons/Icon'
+import { Avatar } from '../Images/Avatar'
+import { Icon } from '../Images/Icon'
 
 const profiles = [
   {
