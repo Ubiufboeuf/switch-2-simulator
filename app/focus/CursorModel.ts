@@ -14,7 +14,7 @@ export class CursorModel {
     },
     directionAsPoint: { x: 0, y: 0 },
     keyboard: [
-      { key: 'w', direction: 'top' },
+      { key: 'a', direction: 'top' },
       { key: 'a', direction: 'left' },
       { key: 's', direction: 'bottom' },
       { key: 'd', direction: 'right' }

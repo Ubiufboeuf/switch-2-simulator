@@ -2,11 +2,17 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import { convertCSSUnitToNumber, getPositionInCamera } from '~/lib/utils'
 import { useCursorStore } from '~/stores/useCursorStore'
 import { useDebugStore } from '~/stores/useDebugData'
-import type { BoxElement } from '~/types/ui'
+import type { BoxElement, DirectionAsPoint } from '~/types/ui'
 
 type CursorHookProps = {
   borderSpacing: number
   borderWidth: number
+}
+
+const movement = {
+  '-1': -10,
+  '0': 0,
+  '1': 10
 }
 
 export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
@@ -48,10 +54,12 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
 
     const controllerKeyboard = cursor.controller.keyboard
 
-    const keyboardDirection = controllerKeyboard.find(({key}) => key === event.key)?.direction
-    if (!keyboardDirection) return
+    let directionAsPoint: DirectionAsPoint = {}
+    for (const { key, direction } of controllerKeyboard) {
+      if (key !== event.key) continue
+      directionAsPoint = cursor.changeDirection('press', direction)
+    }
 
-    const directionAsPoint = cursor.changeDirection('press', keyboardDirection)
     setDirection({
       ...direction,
       ...directionAsPoint
@@ -61,10 +69,11 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
   function handleKeyUp (event: KeyboardEvent) {
     const controllerKeyboard = cursor.controller.keyboard
 
-    const keyboardDirection = controllerKeyboard.find(({key}) => key === event.key)?.direction
-    if (!keyboardDirection) return
-    
-    const directionAsPoint = cursor.changeDirection('release', keyboardDirection)
+    let directionAsPoint: DirectionAsPoint = {}
+    for (const { key, direction } of controllerKeyboard) {
+      if (key !== event.key) continue
+      directionAsPoint = cursor.changeDirection('release', direction)
+    }
     setDirection({
       ...direction,
       ...directionAsPoint
@@ -77,6 +86,12 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
     }
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('keyup', handleKeyUp)
+
+    setElementDimensions({
+      ...elementDimensions,
+      left: movement[`${direction.x}` as keyof typeof movement],
+      top: movement[`${direction.y}` as keyof typeof movement]
+    })
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
