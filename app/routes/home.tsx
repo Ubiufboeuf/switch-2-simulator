@@ -1,8 +1,6 @@
 import { title } from '~/lib/utils'
 import type { Route } from './+types/home'
-import { useEffect, useRef } from 'react'
-import { FocusMap } from '~/models/MapModel'
-import { VIRTUAL_MAPS } from '~/lib/constants/virtual_map'
+import { useRef } from 'react'
 import { SectionProfiles } from '~/compontents/home/SectionProfiles'
 import { SectionTopInfo } from '~/compontents/home/SectionTopInfo'
 import { SectionGames } from '~/compontents/home/SectionGames'
@@ -20,18 +18,6 @@ export function meta ({}: Route.MetaArgs) {
 
 export default function Home () {
   const cameraRef = useRef<HTMLElement>(null)
-
-  async function loadMap () {
-    const camera = cameraRef.current
-    if (!camera) return
-
-    const map = new FocusMap(VIRTUAL_MAPS.HOME)
-    // console.log(map)
-  }
-  
-  useEffect(() => {
-    loadMap()
-  }, [])
   
   return (
     <main
