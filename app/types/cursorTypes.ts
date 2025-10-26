@@ -1,6 +1,13 @@
-import type { KeyboardMovementKeys } from '~/env'
+import type { KeyboardKey } from '~/env'
+import type { Direction } from './ui'
 
-export type CursorKeyboard = {
-  actions: Record<KeyboardMovementKeys, string>
-  directions: Record<KeyboardMovementKeys, { [k in 'x' | 'y']?: number }>
+type CursorControllerAction = () => void
+
+export type CursorController = {
+  directions: Record<Direction, boolean>,
+  actions: Record<Direction, CursorControllerAction>
+  keyboard: {
+    key: KeyboardKey
+    direction: Direction
+  }[]
 }

@@ -1,18 +1,25 @@
-import type { CursorKeyboard } from '~/types/cursorTypes'
+import type { CursorController } from '~/types/cursorTypes'
 
 export class CursorModel {
-  keyboard: CursorKeyboard = {
-    actions: {
-      w: '',
-      a: '',
-      s: '',
-      d: ''
-    },
+  controllerType: 'keyboard' | 'gamepad' = 'keyboard'
+  controller: CursorController = {
     directions: {
-      w: { y: -1 },
-      a: { x: -1 },
-      s: { y: 1 },
-      d: { x: 1 }
-    }
+      top: false,
+      left: false,
+      bottom: false,
+      right: false
+    },
+    actions: {
+      top: () => {},
+      left: () => {},
+      bottom: () => {},
+      right: () => {}
+    },
+    keyboard: [
+      { key: 'w', direction: 'top' },
+      { key: 'a', direction: 'left' },
+      { key: 's', direction: 'bottom' },
+      { key: 'd', direction: 'right' }
+    ]
   }
 }

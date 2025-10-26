@@ -6,3 +6,5 @@ export type Dimensions = {
 }
 
 export type BoxElement = HTMLElement | HTMLDivElement
+
+export type Direction = 'top' | 'left' | 'bottom' | 'right'
