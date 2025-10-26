@@ -1,5 +1,4 @@
 import { useEffect, useState, type CSSProperties } from 'react'
-import type { KeyboardMovementKeys } from '~/env'
 import { convertCSSUnitToNumber, getPositionInCamera, limitNumber } from '~/lib/utils'
 import { useCursorStore } from '~/stores/useCursorStore'
 import { useDebugStore } from '~/stores/useDebugData'
@@ -46,57 +45,38 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
     if (event.key === ' ') {
       toggleIsPanelVisible()
     }
-    const key = event.key as KeyboardMovementKeys
-    if (!(key in cursor.keyboard.directions)) return
+    // const key = event.key as KeyboardMovementKeys
+    // if (!(key in cursor.keyboard.directions)) return
 
-    // console.log(direction, cursor.keyboard.directions[key])
-    const ckd = cursor.keyboard.directions[key]
-    const mixedDirection = {
-      x: ckd.x || direction.x,
-      y: ckd.y || direction.y
-    }
+    // const ckd = cursor.keyboard.directions[key]
 
-    // let horizontalDirection = 0
-    // if (direction.x > 0 && ckd.x < 0) {
-    //   // direction.x + (ckd.x || 0)
-    // }
-    
     // const positiveDirection = {
-    //   x: limitNumber(horizontalDirection),
+    //   x: limitNumber(direction.x + (ckd.x || 0)),
     //   y: limitNumber(direction.y + (ckd.y || 0))
     // }
 
     // setDirection(positiveDirection)
-    setDirection(mixedDirection)
   }
 
   function handleKeyUp (event: KeyboardEvent) {
-    const key = event.key as KeyboardMovementKeys
-    if (!(key in cursor.keyboard.directions)) return
+    // const key = event.key as KeyboardMovementKeys
+    // if (!(key in cursor.keyboard.directions)) return
 
-    const ckd = cursor.keyboard.directions[key]
-    const negativeDirection = {
-      x: limitNumber(direction.x - (ckd.x || 0)),
-      y: limitNumber(direction.y - (ckd.y || 0))
-    }
+    // const ckd = cursor.keyboard.directions[key]
+    // const negativeDirection = {
+    //   x: limitNumber(direction.x - (ckd.x || 0)),
+    //   y: limitNumber(direction.y - (ckd.y || 0))
+    // }
 
-    setDirection({ ...direction, ...negativeDirection })
+    // setDirection({ ...direction, ...negativeDirection })
   }
 
   useEffect(() => {
     if (direction) {
-      // setDebugData({...direction, xCount, yCount})
+      setDebugData({...direction})
     }
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('keyup', handleKeyUp)
-
-    // setElementDimensions((dimensions) => {
-    //   return {
-    //     ...dimensions,
-    //     left: positionsX[direction.x as keyof Positions],
-    //     top: positionsY[direction.y as keyof Positions]
-    //   }
-    // })
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
