@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties } from 'react'
-import { convertCSSUnitToNumber, getPositionInCamera, limitNumber } from '~/lib/utils'
+import { convertCSSUnitToNumber, getPositionInCamera } from '~/lib/utils'
 import { useCursorStore } from '~/stores/useCursorStore'
 import { useDebugStore } from '~/stores/useDebugData'
 import type { BoxElement } from '~/types/ui'
