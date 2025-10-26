@@ -1,29 +1,14 @@
-import type { Box } from './BoxModel'
+import type { Box, Game } from './BoxModel'
 
-type Focusable = Box
+type Item = Box | Game
 
 export class Section {
   id: string
-  parentId: string | null
-  items: Focusable[] = []
+  mapId?: string
+  items: Item[] = []
 
-  constructor (id: string, parentId: string | null = null) {
-    this.id = id
-    this.parentId = parentId
-  }
-
-  addItem (item: Focusable) {
-    this.items.push(item)
-  }
-
-  getItem (id: string) {
-    return this.items.find((item) => item.id === id)
-  }
-
-  removeItem (id: string) {
-    const newItems = this.items.filter((item) => item.id === id)
-    this.items = newItems
-    
-    return newItems
+  constructor (mapId?: string) {
+    this.id = crypto.randomUUID()
+    this.mapId = mapId
   }
 }
