@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { debugPanelVisible } from '~/lib/constants/env'
 
 type DebugData = { [key: string]: unknown }
 
@@ -11,7 +12,7 @@ type DebugStore = {
 }
 
 export const useDebugStore = create<DebugStore>((set, get) => ({
-  isPanelVisible: false,
+  isPanelVisible: debugPanelVisible,
   debugData: {},
   setDebugData: (debugData) => set({ debugData }),
   setIsPanelVisible: (isPanelVisible) => set({ isPanelVisible }),
