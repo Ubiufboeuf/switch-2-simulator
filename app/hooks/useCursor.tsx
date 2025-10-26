@@ -87,11 +87,17 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('keyup', handleKeyUp)
 
-    setElementDimensions({
-      ...elementDimensions,
-      left: movement[`${direction.x}` as keyof typeof movement],
-      top: movement[`${direction.y}` as keyof typeof movement]
-    })
+    let left = movement[`${direction.x}` as keyof typeof movement]
+    let top = movement[`${direction.y}` as keyof typeof movement]
+
+    // Esto es para limitar la distancia que se mueve hacia la "hipotenusa",
+    // acercando el movimiento más a el de uno circular
+    if (left !== 0 && top !== 0) {
+      left *= Math.sin(45 * Math.PI / 180)
+      top *= Math.sin(45 * Math.PI / 180)
+    }
+
+    setElementDimensions({ ...elementDimensions, left, top })
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
