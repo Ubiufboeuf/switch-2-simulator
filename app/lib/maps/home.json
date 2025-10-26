@@ -1,220 +1,43 @@
-[
-  {
-    "id": "section-1",
-    "name": "section-profiles",
-    "items": [
-      {
-        "id": "box-1",
-        "parentId": "section-1",
-        "topology": {
-          "down": "box-1",
-          "left": "box-1",
-          "right": "box-2",
-          "up": "box-1"
+{
+  "id": "map-id-home-preset",
+  "name": "home",
+  "path": "/home",
+  "items": [
+    {
+      "id": "section-profiles",
+      "mapId": "map-id-home-preset",
+      "items": [
+        {
+          "id": "box-game-1",
+          "parentId": "map-id-home-preset",
+          "type": "game",
+          "gameName": "Mario Kart 8 Deluxe",
+          "isDigital": true,
+          "isInserted": false,
+          "assets": {
+            "coverArt": "/switchui/images/games-cover-art/mario_kart_8_deluxe-256.avif"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": "box-game-2",
+          "parentId": "map-id-home-preset",
+          "type": "game",
+          "gameName": "Mario Kart 8 Deluxe",
+          "isDigital": true,
+          "isInserted": false,
+          "assets": {
+            "coverArt": "/switchui/images/games-cover-art/mario_kart_8_deluxe-256.avif"
+          },
+          "position": {
+            "x": 1,
+            "y": 0
+          }
         }
-      },
-      {
-        "id": "box-2",
-        "parentId": "section-1",
-        "topology": {
-          "down": "box-2",
-          "left": "box-1",
-          "right": "box-3",
-          "up": "box-2"
-        }
-      },
-      {
-        "id": "box-3",
-        "parentId": "section-1",
-        "topology": {
-          "down": "box-3",
-          "left": "box-2",
-          "right": "box-4",
-          "up": "box-3"
-        }
-      },
-      {
-        "id": "box-4",
-        "parentId": "section-1",
-        "topology": {
-          "down": "box-4",
-          "left": "box-3",
-          "right": "box-4",
-          "up": "box-4"
-        }
-      }
-    ],
-    "orientation": "horizontal"
-  },
-  {
-    "id": "section-2",
-    "name": "section-top-info",
-    "items": [
-      {
-        "id": "box-5",
-        "parentId": "section-2",
-        "topology": {
-          "down": "box-5",
-          "left": "box-5",
-          "right": "box-5",
-          "up": "box-5"
-        }
-      }
-    ],
-    "orientation": "horizontal"
-  },
-  {
-    "id": "section-3",
-    "name": "section-games",
-    "items": [
-      {
-        "id": "box-6",
-        "parentId": "section-3",
-        "topology": {
-          "down": "box-6",
-          "left": "box-6",
-          "right": "box-7",
-          "up": "box-1"
-        }
-      },
-      {
-        "id": "box-7",
-        "parentId": "section-3",
-        "topology": {
-          "down": "box-7",
-          "left": "box-5",
-          "right": "box-8",
-          "up": "box-1"
-        }
-      },
-      {
-        "id": "box-8",
-        "parentId": "section-3",
-        "topology": {
-          "down": "box-8",
-          "left": "box-7",
-          "right": "box-9",
-          "up": "box-1"
-        }
-      },
-      {
-        "id": "box-9",
-        "parentId": "section-3",
-        "topology": {
-          "down": "box-9",
-          "left": "box-8",
-          "right": "box-9",
-          "up": "box-1"
-        }
-      }
-    ],
-    "orientation": "horizontal"
-  },
-  {
-    "id": "section-4",
-    "name": "section-navigation",
-    "items": [
-      {
-        "id": "box-10",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-10",
-          "left": "box-10",
-          "right": "box-11",
-          "up": "box-6"
-        }
-      },
-      {
-        "id": "box-11",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-11",
-          "left": "box-10",
-          "right": "box-12",
-          "up": "box-6"
-        }
-      },
-      {
-        "id": "box-12",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-12",
-          "left": "box-11",
-          "right": "box-13",
-          "up": "box-7"
-        }
-      },
-      {
-        "id": "box-13",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-13",
-          "left": "box-12",
-          "right": "box-14",
-          "up": "box-7"
-        }
-      },
-      {
-        "id": "box-14",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-14",
-          "left": "box-13",
-          "right": "box-15",
-          "up": "box-7"
-        }
-      },
-      {
-        "id": "box-15",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-15",
-          "left": "box-14",
-          "right": "box-16",
-          "up": "box-8"
-        }
-      },
-      {
-        "id": "box-16",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-16",
-          "left": "box-15",
-          "right": "box-17",
-          "up": "box-8"
-        }
-      },
-      {
-        "id": "box-17",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-17",
-          "left": "box-16",
-          "right": "box-18",
-          "up": "box-8"
-        }
-      },
-      {
-        "id": "box-18",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-18",
-          "left": "box-17",
-          "right": "box-19",
-          "up": "box-9"
-        }
-      },
-      {
-        "id": "box-19",
-        "parentId": "section-4",
-        "topology": {
-          "down": "box-19",
-          "left": "box-18",
-          "right": "box-19",
-          "up": "box-10"
-        }
-      }
-    ],
-    "orientation": "horizontal"
-  }
-]
+      ]
+    }
+  ]
+}
