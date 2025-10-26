@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import type { Point } from '~/env'
-import { CursorModel } from '~/focus/CursorModel'
+import { CursorModel } from '~/models/CursorModel'
 
 type CursorStore = {
   readonly cursor: CursorModel

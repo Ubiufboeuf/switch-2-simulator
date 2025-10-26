@@ -1,7 +1,7 @@
 import { title } from '~/lib/utils'
 import type { Route } from './+types/home'
 import { useEffect, useRef } from 'react'
-import { FocusMap } from '~/focus/FocusMap'
+import { FocusMap } from '~/models/MapModel'
 import { VIRTUAL_MAPS } from '~/lib/constants/virtual_map'
 import { SectionProfiles } from '~/compontents/home/SectionProfiles'
 import { SectionTopInfo } from '~/compontents/home/SectionTopInfo'

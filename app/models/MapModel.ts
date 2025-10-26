@@ -1,5 +1,5 @@
-import type { Box } from '~/stores/useCreatorStore'
-import type { Section } from './Section'
+import type { Box } from '~/types/boxTypes'
+import type { Section } from './SectionModel'
 
 export type FocusNode = {
   up: string
