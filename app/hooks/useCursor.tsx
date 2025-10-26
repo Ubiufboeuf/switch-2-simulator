@@ -45,30 +45,30 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
     if (event.key === ' ') {
       toggleIsPanelVisible()
     }
-    // const key = event.key as KeyboardMovementKeys
-    // if (!(key in cursor.keyboard.directions)) return
 
-    // const ckd = cursor.keyboard.directions[key]
+    const controllerKeyboard = cursor.controller.keyboard
 
-    // const positiveDirection = {
-    //   x: limitNumber(direction.x + (ckd.x || 0)),
-    //   y: limitNumber(direction.y + (ckd.y || 0))
-    // }
+    const keyboardDirection = controllerKeyboard.find(({key}) => key === event.key)?.direction
+    if (!keyboardDirection) return
 
-    // setDirection(positiveDirection)
+    const directionAsPoint = cursor.changeDirection('press', keyboardDirection)
+    setDirection({
+      ...direction,
+      ...directionAsPoint
+    })
   }
 
   function handleKeyUp (event: KeyboardEvent) {
-    // const key = event.key as KeyboardMovementKeys
-    // if (!(key in cursor.keyboard.directions)) return
+    const controllerKeyboard = cursor.controller.keyboard
 
-    // const ckd = cursor.keyboard.directions[key]
-    // const negativeDirection = {
-    //   x: limitNumber(direction.x - (ckd.x || 0)),
-    //   y: limitNumber(direction.y - (ckd.y || 0))
-    // }
-
-    // setDirection({ ...direction, ...negativeDirection })
+    const keyboardDirection = controllerKeyboard.find(({key}) => key === event.key)?.direction
+    if (!keyboardDirection) return
+    
+    const directionAsPoint = cursor.changeDirection('release', keyboardDirection)
+    setDirection({
+      ...direction,
+      ...directionAsPoint
+    })
   }
 
   useEffect(() => {
