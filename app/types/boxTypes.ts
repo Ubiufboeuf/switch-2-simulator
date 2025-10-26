@@ -8,3 +8,6 @@ export type Box =  {
     right: string | null
   }
 }
+
+export type BoxType = 'empty' | 'game'
+
