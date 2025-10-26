@@ -1,39 +1,10 @@
-import type { Box } from '~/types/boxTypes'
-import type { Section } from './SectionModel'
+import type { MapItems } from '~/types/mapTypes'
 
-export type FocusNode = {
-  up: string
-  left: string
-  down: string
-  right: string
-}
-
-export type MapStructure = {
+export class Map {
   id: string
-  name: string
-  items: Box[]
-  orientation: string
-}[]
+  items: MapItems[] = []
 
-export class FocusMap {
-  // Guarda todas las secciones: {'sectionA': Section, 'sectionB': Section, ...}
-  private entities: Map<string, Section> = new Map()
-
-  // Estructura de las conexiones: {'boxA': {'up': 'boxB', ...}, ...}
-  private topology: Map<string, FocusNode> = new Map()
-
-  // "Memoria" del foco de las secciones: {'sectionId': 'lastFocusedBoxId', ...}
-  private sectionMemory: Map<string, string> = new Map()
-
-  constructor (structure: MapStructure) {
-    // console.log('FocusMap', structure)
-  }
-
-  getRestoredFocusId (sectionId: string) {
-    return this.sectionMemory.get(sectionId) || null
-  }
-  
-  saveFocus (sectionId: string, boxId: string) {
-    this.sectionMemory.set(sectionId, boxId)
+  constructor () {
+    this.id = crypto.randomUUID()
   }
 }
