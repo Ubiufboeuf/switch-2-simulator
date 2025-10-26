@@ -1,6 +1,6 @@
 import { title } from '~/lib/utils'
 import type { Route } from './+types/home'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { SectionProfiles } from '~/compontents/home/SectionProfiles'
 import { SectionTopInfo } from '~/compontents/home/SectionTopInfo'
 import { SectionGames } from '~/compontents/home/SectionGames'
@@ -8,6 +8,8 @@ import { SectionNavigation } from '~/compontents/home/SectionNavigation'
 import { SectionControls } from '~/compontents/home/SectionControls'
 import { SectionButtons } from '~/compontents/home/SectionButtons'
 import { Cursor } from '~/compontents/Cursor'
+import { useSimulatorStore } from '~/stores/useSimulatorStore'
+import { useLoadMap } from '~/hooks/useLoadMap'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -17,7 +19,16 @@ export function meta ({}: Route.MetaArgs) {
 }
 
 export default function Home () {
+  useLoadMap('home')
+
   const cameraRef = useRef<HTMLElement>(null)
+  const setCamera = useSimulatorStore((state) => state.setCamera)
+
+  useEffect(() => {
+    if (cameraRef.current) {
+      setCamera(cameraRef.current)
+    }  
+  }, [])
   
   return (
     <main
