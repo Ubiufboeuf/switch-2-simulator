@@ -6,7 +6,7 @@ export function DebugPanel () {
 
   return (
     <dialog
-      className='absolute left-auto right-0 top-0 z-[999] h-120 w-80 flex flex-col gap-2 bg-neutral-950 transition-all p-4'
+      className='absolute left-auto right-0 top-0 z-[999] h-120 w-80 flex flex-col gap-2 bg-neutral-950 transition-all p-4 outline-0'
       hidden={!isPanelVisible}
     >
       <h1 className='text-center font-bold text-lg'>Debug Panel</h1>
