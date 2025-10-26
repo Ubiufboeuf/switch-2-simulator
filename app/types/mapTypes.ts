@@ -1,3 +1,3 @@
-import type { Section } from './sectionTypes'
+import type { Section } from '~/models/SectionModel'
 
-export type MapItems = Section[]
+export type MapItem = Section
