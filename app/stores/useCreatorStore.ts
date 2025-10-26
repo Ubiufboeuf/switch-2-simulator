@@ -1,4 +1,6 @@
 import { create } from 'zustand'
+import type { Box } from '~/types/boxTypes'
+import type { Section } from '~/types/sectionTypes'
 
 type CreatorStore = {
   sections: Section[]
@@ -6,24 +8,6 @@ type CreatorStore = {
   editSection: (section: Section) => void
   createBox: (sectionId: string) => Box | void
   editBox: (sectionId: string, box: Box) => void
-}
-
-export type Section = {
-  id: string
-  name: string
-  orientation: string
-  items: Box[]
-}
-
-export type Box =  {
-  id: string
-  parentId: string | undefined
-  topology: {
-    up: string | null
-    left: string | null
-    down: string | null
-    right: string | null
-  }
 }
 
 let sectionCount = 0
