@@ -1,6 +1,4 @@
-import type { AvatarDimensions } from './types'
-
-export const Avatars: AvatarDimensions = {
+export const Avatars = {
   mario: {
     left: '-6px',
     top: '-12.75px',
