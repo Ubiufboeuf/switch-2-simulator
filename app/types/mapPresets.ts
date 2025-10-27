@@ -1,3 +1,4 @@
+import type { Point } from '~/env'
 import type { MapItem } from './mapTypes'
 import type { Size } from './ui'
 
@@ -8,4 +9,5 @@ export interface MapPreset {
   path: string
   items: MapItem[]
   virtualSize: Size
+  initialCursorPosition: Point
 }

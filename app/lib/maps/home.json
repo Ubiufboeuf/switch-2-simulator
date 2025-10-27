@@ -2,6 +2,10 @@
   "id": "home-map-preset",
   "name": "home",
   "path": "/home",
+  "initialCursorPosition": {
+    "x": 0,
+    "y": 1
+  },
   "virtualSize": {
     "height": 3,
     "width": 0
