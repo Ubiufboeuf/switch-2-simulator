@@ -4,6 +4,7 @@ import type { GameAssets } from './games'
 export type BoxType = 'empty' | 'game' | 'link'
 
 export type GameModelProps = {
+  id?: string
   gameName: string
   isDigital: boolean
   isInserted: boolean

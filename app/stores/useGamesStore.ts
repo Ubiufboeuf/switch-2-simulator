@@ -5,6 +5,7 @@ const baseGames: Game[] = []
 
 for (let i = 0; i < 5; i++) {
   const game = new Game({
+    id: `box-game-${i+1}`,
     gameName: 'Mario Kart 8 Deluxe',
     isDigital: false,
     isInserted: false,
