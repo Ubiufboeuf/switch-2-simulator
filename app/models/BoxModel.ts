@@ -1,5 +1,5 @@
 import type { Point } from '~/env'
-import type { BoxType, GameModelProps } from '~/types/boxTypes'
+import type { BoxType, GameModelProps, LinkModelProps } from '~/types/boxTypes'
 import type { GameAssets } from '~/types/games'
 
 export class Box {
@@ -32,5 +32,18 @@ export class Game extends Box {
     this.isDigital = isDigital
     this.isInserted = isInserted
     this.assets = assets
+  }
+}
+
+export class Link extends Box {
+  path: string
+  text?: string
+  icon?: string
+
+  constructor ({ path, position, text, icon }: LinkModelProps) {
+    super({ type: 'link', position })
+    this.path = path
+    this.text = text
+    this.icon = icon
   }
 }
