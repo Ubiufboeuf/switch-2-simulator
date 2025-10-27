@@ -2,6 +2,10 @@
   "id": "home-map-preset",
   "name": "home",
   "path": "/home",
+  "virtualSize": {
+    "height": 3,
+    "width": 0
+  },
   "items": [
     {
       "id": "home-section-profiles",
