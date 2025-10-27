@@ -17,7 +17,7 @@ export function useLoadMap (name: 'home') {
 
     if (!preset) return
 
-    createMap(preset.id)
+    createMap(preset)
 
     for (const section of preset.items) {
       addItem(section)

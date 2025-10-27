@@ -1,17 +1,21 @@
 import { create } from 'zustand'
+import type { Point } from '~/env'
 import { Map } from '~/models/MapModel'
+import type { MapPreset } from '~/types/mapPresets'
 import type { MapItem } from '~/types/mapTypes'
 
 type MapStore = {
   map: Map | null
-  createMap: (id?: string) => Map
+  initialCursorPosition: Point | null
+  createMap: (preset: MapPreset) => Map
   addItem: (item: MapItem) => void
 }
 
 export const useMapStore = create<MapStore>((set, get) => ({
   map: null,
-  createMap: (id) => {
-    const map = new Map(id)
+  initialCursorPosition: null,
+  createMap: (preset) => {
+    const map = new Map(preset)
     set({ map })
     return map
   },
@@ -21,7 +25,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
     
     set((state) => ({
       map: {
-        id: state.map!.id,
+        ...map,
         items: [
           ...state.map!.items,
           item
