@@ -27,7 +27,7 @@ export default function Home () {
   useEffect(() => {
     if (cameraRef.current) {
       setCamera(cameraRef.current)
-    }  
+    }
   }, [])
   
   return (
