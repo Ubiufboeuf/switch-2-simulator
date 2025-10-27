@@ -1,13 +1,12 @@
-export type Box =  {
-  id: string
-  parentId: string | undefined
-  topology: {
-    up: string | null
-    left: string | null
-    down: string | null
-    right: string | null
-  }
-}
+import type { Point } from '~/env'
+import type { GameAssets } from './games'
 
 export type BoxType = 'empty' | 'game'
 
+export type GameModelProps = {
+  gameName: string
+  isDigital: boolean
+  isInserted: boolean
+  assets: GameAssets
+  position: Point
+}
