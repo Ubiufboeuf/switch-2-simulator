@@ -1,14 +1,14 @@
-import type { Box, Game } from './BoxModel'
-
-type Item = Box | Game
+import type { SectionItem } from '~/types/sectionTypes'
 
 export class Section {
   id: string
   mapId?: string
-  items: Item[] = []
+  name: string
+  items: SectionItem[] = []
 
-  constructor (mapId?: string) {
+  constructor (name: string, mapId: string) {
     this.id = crypto.randomUUID()
+    this.name = name
     this.mapId = mapId
   }
 }
