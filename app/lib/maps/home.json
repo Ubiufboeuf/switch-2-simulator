@@ -8,6 +8,24 @@
       "name": "section-profiles",
       "mapId": "map-id-home-preset",
       "items": [
+        
+      ],
+      "element": {
+        "size": {
+          "x": 0,
+          "y": 0
+        },
+        "position": {
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "id": "home-section-games",
+      "name": "section-games",
+      "mapId": "map-id-home-preset",
+      "items": [
         {
           "id": "box-game-1",
           "parentId": "map-id-home-preset",
