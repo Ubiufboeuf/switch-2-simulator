@@ -4,7 +4,7 @@ export class Map {
   id: string
   items: MapItem[] = []
 
-  constructor () {
-    this.id = crypto.randomUUID()
+  constructor (id?: string) {
+    this.id = id ?? crypto.randomUUID()
   }
 }
