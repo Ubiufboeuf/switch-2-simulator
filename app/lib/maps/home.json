@@ -1,10 +1,11 @@
 {
-  "id": "map-id-home-preset",
+  "id": "home-map-preset",
   "name": "home",
   "path": "/home",
   "items": [
     {
-      "id": "section-profiles",
+      "id": "home-section-profiles",
+      "name": "section-profiles",
       "mapId": "map-id-home-preset",
       "items": [
         {
