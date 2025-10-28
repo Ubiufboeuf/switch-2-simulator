@@ -16,7 +16,8 @@ export const useMapStore = create<MapStore>((set, get) => ({
   initialCursorPosition: null,
   createMap: (preset) => {
     const map = new Map(preset)
-    set({ map })
+    const { initialCursorPosition } = preset
+    set({ map, initialCursorPosition })
     return map
   },
   addItem (item) {
