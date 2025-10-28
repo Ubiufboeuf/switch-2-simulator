@@ -31,6 +31,7 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
   const setDirection = useCursorStore((state) => state.setDirection)
   const cursorPosition = useCursorStore((state) => state.virtualPosition)
   const setCursorPosition = useCursorStore((state) => state.setVirtualPosition)
+  const changeDirection = useCursorStore((state) => state.changeDirection)
   const initialCursorPosition = useMapStore((state) => state.initialCursorPosition)
   const [elementStyles, setElementStyles] = useState<CSSProperties | undefined>()
   const [elementDimensions, setElementDimensions] = useState<Partial<DOMRect> | null>(null)
@@ -59,16 +60,18 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
   }
 
   function handleKeyDown (event: KeyboardEvent) {
-    if (!cursor.controller.keyboard.some(({ key }) => key === event.key)) return
+    if (!cursor?.controller.keyboard.some(({ key }) => key === event.key)) return
     setLastKeyAction({ action: 'press', key: event.key })
   }
 
   function handleKeyUp (event: KeyboardEvent) {
-    if (!cursor.controller.keyboard.some(({ key }) => key === event.key)) return
+    if (!cursor?.controller.keyboard.some(({ key }) => key === event.key)) return
     setLastKeyAction({ action: 'release', key: event.key })
   }
 
   async function handleKeyPressed (lastKey: string) {
+    if (!cursor) return
+
     console.log('lastKey pressed', lastKey)
     const controllerKeyboard = cursor.controller.keyboard
 
@@ -77,7 +80,7 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
     let directionAsPoint: DirectionAsPoint = {}
     for (const { key, direction } of controllerKeyboard) {
       if (key !== lastKey) continue
-      directionAsPoint = cursor.changeDirection('press', direction)
+      directionAsPoint = changeDirection('press', direction)
     }
 
     setDirection({
@@ -96,7 +99,7 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
     let directionAsPoint: DirectionAsPoint = {}
     for (const { key, direction } of controllerKeyboard) {
       if (key !== lastKey) continue
-      directionAsPoint = cursor.changeDirection('release', direction)
+      directionAsPoint = changeDirection('release', direction)
     }
     setDirection({
       ...direction,
@@ -110,7 +113,7 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
       handleKeyPressed(lastKeyAction.key)
     else
       handleKeyReleased(lastKeyAction.key)
-  }, [lastKeyAction])
+  }, [lastKeyAction, cursor])
 
   useEffect(() => {
     if (direction) {
@@ -144,7 +147,7 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
     }
-  }, [])
+  }, [cursor])
   
   useEffect(() => {
     if (!boxId) return
