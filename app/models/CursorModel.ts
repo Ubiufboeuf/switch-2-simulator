@@ -1,8 +1,10 @@
+import type { Point } from '~/env'
 import { limitNumber } from '~/lib/utils'
 import type { CursorController } from '~/types/cursorTypes'
 import type { Direction, DirectionAsPoint } from '~/types/ui'
 
 export class CursorModel {
+  initialVirtualPosition: Point
   // controllerType: 'keyboard' | 'gamepad' = 'keyboard'
   controllerType: 'keyboard' = 'keyboard' as const
   controller: CursorController = {
@@ -19,6 +21,10 @@ export class CursorModel {
       { key: 's', direction: 'bottom' },
       { key: 'd', direction: 'right' }
     ]
+  }
+
+  constructor (initialPosition: Point) {
+    this.initialVirtualPosition = initialPosition
   }
 
   changeDirection (action: 'press' | 'release', desiredDirection: Direction) {
