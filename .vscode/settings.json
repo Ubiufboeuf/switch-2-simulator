@@ -1,0 +1,8 @@
+{
+  "conventionalCommits.scopes": [
+    "cursor",
+    "box",
+    "map",
+    "section"
+  ]
+}
