@@ -1,8 +1,25 @@
+import { useEffect, useState, type ReactNode } from 'react'
+import { useCursorStore } from '~/stores/useCursorStore'
 import { useDebugStore } from '~/stores/useDebugData'
 
 export function DebugPanel () {
   const isPanelVisible = useDebugStore((state) => state.isPanelVisible)
-  const debugData = useDebugStore((state) => state.debugData)
+  const direction = useCursorStore((state) => state.direction)
+  const virtualPosition = useCursorStore((state) => state.virtualPosition)
+  const [debugData, setDebugData] = useState<{ [key: string]: ReactNode }[]>([])
+
+  useEffect(() => {
+    setDebugData([
+      {
+        direction_x: direction.x,
+        direction_y: direction.y
+      },
+      {
+        position_x: virtualPosition.x,
+        position_y: virtualPosition.y
+      }
+    ])
+  }, [direction, virtualPosition])
 
   return (
     <dialog
@@ -10,12 +27,13 @@ export function DebugPanel () {
       hidden={!isPanelVisible}
     >
       <h1 className='text-center font-bold text-lg'>Debug Panel</h1>
-      { Object.entries(debugData).map(([key, value]) => (
-        <div key={`debug-panel-${key}-${value}`}>
-          <span>{key}:</span>
-          <span>{`${value}`}</span>
-        </div>
-      )) }
+      {
+        debugData.map((part) => {
+          return Object.entries(part).map(([key, value]) => {
+            return <p key={`debug-data-${key}-${value}`}>{`${key}: ${value}`}</p>
+          })
+        })
+      }
     </dialog>
   )
 }
