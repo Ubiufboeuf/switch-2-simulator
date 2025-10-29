@@ -5,6 +5,7 @@ export class Section {
   mapId?: string
   name: string
   items: SectionItem[] = []
+  displayLimit?: number
 
   constructor (name: string, mapId: string) {
     this.id = crypto.randomUUID()
