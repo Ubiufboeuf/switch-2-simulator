@@ -63,6 +63,36 @@
             "x": 1,
             "y": 0
           }
+        },
+        {
+          "id": "box-game-3",
+          "parentId": "map-id-home-preset",
+          "type": "game",
+          "gameName": "Mario Kart 8 Deluxe",
+          "isDigital": true,
+          "isInserted": false,
+          "assets": {
+            "coverArt": "/switchui/images/games-cover-art/mario_kart_8_deluxe-256.avif"
+          },
+          "position": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        {
+          "id": "box-game-4",
+          "parentId": "map-id-home-preset",
+          "type": "game",
+          "gameName": "Mario Kart 8 Deluxe",
+          "isDigital": true,
+          "isInserted": false,
+          "assets": {
+            "coverArt": "/switchui/images/games-cover-art/mario_kart_8_deluxe-256.avif"
+          },
+          "position": {
+            "x": 1,
+            "y": 0
+          }
         }
       ],
       "element": {
