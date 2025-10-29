@@ -17,3 +17,8 @@ export type Size = {
   height: number
   width: number
 }
+
+export type Animation = {
+  keyframes: Keyframe[] | PropertyIndexedKeyframes | null
+  options?: number | KeyframeAnimationOptions
+}
