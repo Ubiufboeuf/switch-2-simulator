@@ -25,14 +25,21 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
   const toggleIsPanelVisible = useDebugStore((state) => state.toggleIsPanelVisible)
   const setDebugData = useDebugStore((state) => state.setDebugData)
   const boxId = useCursorStore((state) => state.boxId)
+  const setBoxId = useCursorStore((state) => state.setBoxId)
+  const boxElement = useCursorStore((state) => state.boxElement)
+  const setBoxElement = useCursorStore((state) => state.setBoxElement)
   const cursor = useCursorStore((state) => state.cursor)
   const initCursor = useCursorStore((state) => state.initCursor)
   const direction = useCursorStore((state) => state.direction)
   const setDirection = useCursorStore((state) => state.setDirection)
   const cursorPosition = useCursorStore((state) => state.virtualPosition)
   const setCursorPosition = useCursorStore((state) => state.setVirtualPosition)
+  const setCursorAnimation = useCursorStore((state) => state.setCursorAnimation)
+  const revertCursorMovement = useCursorStore((state) => state.revertCursorMovement)
+  const addCursorPosition = useCursorStore((state) => state.addVirtualPosition)
   const changeDirection = useCursorStore((state) => state.changeDirection)
   const initialCursorPosition = useMapStore((state) => state.initialCursorPosition)
+  const getBoxByPosition = useMapStore((state) => state.getBoxByPosition)
   const [elementStyles, setElementStyles] = useState<CSSProperties | undefined>()
   const [elementDimensions, setElementDimensions] = useState<Partial<DOMRect> | null>(null)
   const [borderStyles, setBorderStyles] = useState<CSSProperties | undefined>()
@@ -72,7 +79,6 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
   async function handleKeyPressed (lastKey: string) {
     if (!cursor) return
 
-    console.log('lastKey pressed', lastKey)
     const controllerKeyboard = cursor.controller.keyboard
 
     if (!controllerKeyboard.some(({ key }) => key === lastKey)) return
@@ -107,19 +113,12 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
     })
   }
 
-  useEffect(() => {
-    if (!lastKeyAction) return
-    if (lastKeyAction.action === 'press')
-      handleKeyPressed(lastKeyAction.key)
-    else
-      handleKeyReleased(lastKeyAction.key)
-  }, [lastKeyAction, cursor])
-
-  useEffect(() => {
-    if (direction) {
-      setDebugData(direction)
+  function tryMoveCursor () {
+    if (lastKeyAction?.action === 'release') {
+      setElementStyles({ ...elementStyles, transform: 'translate(0px, 0px)' })
+      return
     }
-
+    
     let x = movement[`${direction.x}` as keyof typeof movement]
     let y = movement[`${direction.y}` as keyof typeof movement]
 
@@ -130,10 +129,35 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
       y *= Math.sin(45 * Math.PI / 180)
     }
 
-    setElementStyles({ ...elementStyles, transform: `translate(${x}px, ${y}px)` })
+    setElementStyles({ ...elementStyles, transform: `translate(${x}px, ${y}px)`, transition: 'all 200ms ease' })
+  }
 
+  useEffect(() => {
+    if (!lastKeyAction) return
+    if (lastKeyAction.action === 'press')
+      handleKeyPressed(lastKeyAction.key)
+    else {
+      handleKeyReleased(lastKeyAction.key)
+      tryMoveCursor() // Esto es para reestablecer la "animación"
+    }
+  }, [lastKeyAction, cursor])
+
+  useEffect(() => {
+    addCursorPosition(direction)
   }, [direction])
+  
+  useEffect(() => {
+    const newBox = getBoxByPosition(cursorPosition)
+    // console.log('newBox', newBox)
+    if (!newBox) {
+      revertCursorMovement()
+      tryMoveCursor()
+      return
+    }
 
+    setBoxId(newBox.id)
+  }, [cursorPosition, boxElement, lastKeyAction])
+  
   useEffect(() => {
     if (!initialCursorPosition) return
     initCursor(initialCursorPosition)
@@ -156,7 +180,8 @@ export function useCursor ({ borderSpacing, borderWidth }: CursorHookProps) {
     const boxElement = document.querySelector(`[data-box-id=${boxId}]`) as BoxElement
     if (!boxElement) return
 
-    console.log({boxElement, prevFocusBoxElement})
+    setBoxElement(boxElement)
+    // console.log({boxElement, prevFocusBoxElement})
 
     prevFocusBoxElement?.removeAttribute('data-box-is-focus')
     boxElement.setAttribute('data-box-is-focus', '')
