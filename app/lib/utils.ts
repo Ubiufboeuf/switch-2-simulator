@@ -1,12 +1,3 @@
-import type { KeyAction, Point } from '~/env'
-
-export function limitNumber (num: number = 0, min: number = -1, max: number = 1) {
-  let n = num
-  n = Math.min(max, num)
-  n = Math.max(min, n)
-  return n
-}
-
 export function getPositionInCamera (coordAxis: 'left' | 'top' = 'left', position: number) {
   if (!document || !window) return position
   const camera = document.querySelector('#camera')
@@ -35,15 +26,3 @@ export function convertCSSUnitToNumber (unit: string | CSSStyleValue | undefined
   return Number(numberAsString) || 0
 }
 
-export function getDirection (keyAction: KeyAction | undefined, lastDirection: Point) {
-  const direction = lastDirection
-  if (!keyAction) return direction
-  if (keyAction.action === 'release') return direction
-
-  if (keyAction.key === 'w') direction.y = -1
-  if (keyAction.key === 'a') direction.x = -1
-  if (keyAction.key === 's') direction.y = 1
-  if (keyAction.key === 'd') direction.x = 1
-  
-  return direction
-}
