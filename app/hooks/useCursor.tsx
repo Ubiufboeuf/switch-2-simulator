@@ -47,13 +47,13 @@ export function useCursor ({ borderWidth, borderSpacing }: HookProps) {
 
   function handleKeyDown (event: KeyboardEvent) {
     if (!validKeys.some(({ key }) => key === event.key)) return
-    console.log('key down')
+    console.log('key pressed')
     setLastKeyAction({ action: 'press', key: event.key })
   }
 
   function handleKeyUp (event: KeyboardEvent) {
     if (!validKeys.some(({ key }) => key === event.key)) return
-    console.log('key up')
+    console.log('key released')
     setLastKeyAction({ action: 'release', key: event.key })
   }
 
