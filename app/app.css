@@ -34,3 +34,9 @@ body {
     background: #A8E7FB;
   }
 }
+
+#cursor {
+  transition-property: left, top;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
