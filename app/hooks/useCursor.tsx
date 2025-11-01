@@ -1,6 +1,6 @@
 import { useEffect, useState, type CSSProperties } from 'react'
 import { Temporal } from 'temporal-polyfill'
-import type { Direction, LtvDirections, Point, ValidKeys } from '~/env'
+import type { LtvDirections, Point, ValidKeys } from '~/env'
 import { calculateDirection, convertCSSUnitToNumber, getPositionInCamera, getPositionPlusDirection } from '~/lib/utils'
 import { map } from '~/routes/index'
 
@@ -16,14 +16,14 @@ export const validKeys: ValidKeys = [
   { key: 'd', direction: 'right' }
 ]
 
-const defaultPosition = {
+const initialPosition = {
   x: 0,
   y: 0
 }
 
 const defaultStyles: CSSProperties = {
-  height: '96px',
-  width: '96px',
+  height: 0,
+  width: 0,
   borderRadius: 8
 }
 
@@ -37,7 +37,7 @@ const defaultLtvDirections: LtvDirections = {
 }
 
 export function useCursor ({ borderWidth, borderSpacing }: HookProps) {
-  const [cursorPosition, setCursorPosition] = useState(defaultPosition)
+  const [cursorPosition, setCursorPosition] = useState(initialPosition)
   const [cursorStyles, setCursorStyles] = useState(defaultStyles)
   const [ltvDirections, setLtvDirections] = useState(defaultLtvDirections)
   const [repeatTimer, setRepeatTimer] = useState<NodeJS.Timeout | null>(null)
@@ -118,6 +118,15 @@ export function useCursor ({ borderWidth, borderSpacing }: HookProps) {
   }
   
   useEffect(() => {
+    const sum = getPositionPlusDirection(cursorPosition, initialPosition)
+    const newBox = getBoxByPosition(sum)
+
+    if (!(newBox instanceof HTMLElement)) return
+    
+    // Actualizar posición y estilos solo si existe la caja
+    setCursorPosition(sum)
+    updateCursorStyles(newBox)
+
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('keyup', handleKeyUp)
 
