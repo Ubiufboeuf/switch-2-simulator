@@ -36,7 +36,7 @@ export default defineConfig([
     settings: {
       'react': {
         'version': 'detect',
-        'defaultVersion': ''
+        'defaultVersion': '19.1.1'
       }
     }
   }

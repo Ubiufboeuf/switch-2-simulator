@@ -1,9 +1,14 @@
 @import "tailwindcss";
-@plugin "@midudev/tailwind-animations";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+@font-face {
+  font-family: Inter;
+  src:
+    local('Inter')
+    url('/Inter.woff2');
+}
+
+:root {
+  font-family: 'Inter', Inter, system-ui;
 }
 
 html,
@@ -11,43 +16,4 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
-  
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-}
-
-#cursor-border {
-  user-select: none;
-  pointer-events: none;
-  
-  --mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); 
-  -webkit-mask: var(--mask);
-  mask: var(--mask);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  border-radius: inherit;
-
-  #cursor-border-colors {
-    background: conic-gradient(
-      #1180F4,
-      #CFFDFD,
-      #866fdb,
-      #1e77d6,
-      #ca8dbc,
-      #1180F4
-    );
-    animation: spin 6s infinite linear;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  60%, 100% {
-    transform: rotate(360deg);
-  }
 }
