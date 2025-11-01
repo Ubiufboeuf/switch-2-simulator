@@ -1,8 +1,3 @@
-export type KeyAction = {
-  action: 'press' | 'release'
-  key: string
-}
-
 export type Point = {
   x: number,
   y: number
@@ -25,6 +20,3 @@ export type ValidKeys = {
   key: Keys,
   direction: Direction
 }[]
-
-// export type ValidKeys = Record<Keys, boolean>
-export type Directions = Record<Direction, boolean>
