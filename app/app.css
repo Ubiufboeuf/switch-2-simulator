@@ -8,8 +8,13 @@
 }
 
 @theme {
-  --color-primary-light: #A8E7FB;
-  --color-primary-dark: #525264;
+  --color-light: #A8E7FB;
+  --color-primary: #A1BFE3;
+  --color-secondary: #EFBEE1;
+  
+  --color-dark: #525264;
+  --color-primary: #433547;
+  --color-secondary: #B74560;
 }
 
 :root {
