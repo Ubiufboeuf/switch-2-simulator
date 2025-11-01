@@ -7,8 +7,14 @@
     url('/Inter.woff2');
 }
 
+@theme {
+  --color-primary-light: #A8E7FB;
+  --color-primary-dark: #525264;
+}
+
 :root {
   font-family: 'Inter', Inter, system-ui;
+  color-scheme: dark light;
 }
 
 html,
@@ -16,4 +22,10 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
+
+  background: #525264;
+
+  @media (prefers-color-scheme: light) {
+    background: #A8E7FB;
+  }
 }
