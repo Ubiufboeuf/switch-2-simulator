@@ -1,3 +1,5 @@
+import type { LtvDirections, Point } from '~/env'
+
 export function getPositionInCamera (coordAxis: 'left' | 'top' = 'left', position: number) {
   if (!document || !window) return position
   const camera = document.querySelector('#camera')
@@ -24,5 +26,48 @@ export function convertCSSUnitToNumber (unit: string | CSSStyleValue | undefined
   }
   
   return Number(numberAsString) || 0
+}
+
+export function calculateDirection ({ down, left, right, up }: LtvDirections): Point {
+  let verticalDirection = 0
+  let horizontalDirection = 0
+
+  // LTV: Encuentra el más reciente de cada eje (timestamp más alto)
+  const lastVertical = Math.max(up, down)
+  const lastHorizontal = Math.max(left, right)
+
+  // Prioridad horizontal
+  if (down === lastVertical && down !== 0) {
+    verticalDirection = 1
+  } else if (up === lastVertical && up !== 0) {
+    verticalDirection = -1
+  }
+
+  // Prioridad horizontal
+  if (right === lastHorizontal && right !== 0) {
+    horizontalDirection = 1
+  } else if (left === lastHorizontal && left !== 0) {
+    horizontalDirection = -1
+  }
+
+  // Eliminar movimiento diagonal
+  if (horizontalDirection !== 0 && verticalDirection !== 0) {
+    // Con esto se prioriza, en un caso MUY improbable, el movimiento horizontal
+    if (lastHorizontal >= lastVertical) verticalDirection = 0
+    else horizontalDirection = 0
+  }
+
+  // Al final queda (0, 0), (±1, 0), o (0, ±1) // El ± es u00b1
+  return {
+    x: horizontalDirection,
+    y: verticalDirection
+  }
+}
+
+export function getPositionPlusDirection (position: Point, direction: Point) {
+  return {
+    x: position.x + direction.x,
+    y: position.y + direction.y
+  }
 }
 

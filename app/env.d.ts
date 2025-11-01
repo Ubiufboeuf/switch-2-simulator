@@ -20,3 +20,5 @@ export type ValidKeys = {
   key: Keys,
   direction: Direction
 }[]
+
+export type LtvDirections = Record<Direction, number>

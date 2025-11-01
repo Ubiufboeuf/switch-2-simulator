@@ -1,6 +1,7 @@
 import { useEffect, useState, type CSSProperties } from 'react'
-import type { Point, ValidKeys } from '~/env'
-import { convertCSSUnitToNumber, getPositionInCamera } from '~/lib/utils'
+import { Temporal } from 'temporal-polyfill'
+import type { Direction, LtvDirections, Point, ValidKeys } from '~/env'
+import { calculateDirection, convertCSSUnitToNumber, getPositionInCamera, getPositionPlusDirection } from '~/lib/utils'
 import { map } from '~/routes/index'
 
 type HookProps = {
@@ -15,23 +16,80 @@ export const validKeys: ValidKeys = [
   { key: 'd', direction: 'right' }
 ]
 
+const defaultPosition = {
+  x: 0,
+  y: 0
+}
+
 const defaultStyles: CSSProperties = {
   height: '96px',
   width: '96px',
   borderRadius: 8
 }
 
+// ltv: Lógica de última Tecla Válida
+
+const defaultLtvDirections: LtvDirections = {
+  up: 0,
+  down: 0,
+  left: 0,
+  right: 0
+}
+
 export function useCursor ({ borderWidth, borderSpacing }: HookProps) {
+  const [cursorPosition, setCursorPosition] = useState(defaultPosition)
   const [cursorStyles, setCursorStyles] = useState(defaultStyles)
+  const [ltvDirections, setLtvDirections] = useState(defaultLtvDirections)
+  const [repeatTimer, setRepeatTimer] = useState<NodeJS.Timeout | null>(null)
 
   function handleKeyDown (event: KeyboardEvent) {
     if (!validKeys.some(({ key }) => key === event.key)) return
-    console.log('key pressed')
+
+    // Conseguir dirección
+    const direction = validKeys.find(({ key }) => key === event.key)!.direction
+    
+    // Si la dirección está presionada, ignorar
+    if (ltvDirections[direction] !== 0) return
+
+    // Actualizar estado ltv
+    setLtvDirections((prev) => ({
+      ...prev,
+      [direction]: Temporal.Now.instant().epochMilliseconds
+    }))
+
+    // // Mover cursor inmediatamente
+    // moveCursor()
   }
 
   function handleKeyUp (event: KeyboardEvent) {
     if (!validKeys.some(({ key }) => key === event.key)) return
-    console.log('key released')
+
+    // Conseguir dirección
+    const direction = validKeys.find(({ key }) => key === event.key)!.direction
+
+    // Reiniciar timestamp
+    setLtvDirections((prev) => ({
+      ...prev,
+      [direction]: 0
+    }))
+  }
+
+  function moveCursor () {
+    // Calcular la dirección de movimiento
+    const { x, y } = calculateDirection(ltvDirections)
+
+    // Mover solo si hay movimiento
+    if (x === 0 && y === 0) return
+
+    // Mover cursor
+    const sum = getPositionPlusDirection(cursorPosition, { x, y })
+    const newBox = getBoxByPosition(sum)
+
+    if (!(newBox instanceof HTMLElement)) return
+    
+    // Actualizar posición y estilos solo si existe la caja
+    setCursorPosition(sum)
+    updateCursorStyles(newBox)
   }
 
   function getBoxByPosition ({ x, y }: Point) {
@@ -68,6 +126,36 @@ export function useCursor ({ borderWidth, borderSpacing }: HookProps) {
       window.removeEventListener('keyup', handleKeyUp)
     }
   }, [])
+
+  useEffect(() => {
+    // Lógica para repetir el movimiento mientras hayan teclas presionadas
+    // Solo debe ejecutarse cuando el estado LTV cambia (o sea, alguna tecla se presiona y suelta)
+
+    // Limpiar intervalo para evitar más de un intervalo
+    if (repeatTimer) {
+      clearInterval(repeatTimer)
+      setRepeatTimer(null)
+    }
+
+    const { x, y } = calculateDirection(ltvDirections)
+    if (x !== 0 || y !== 0) {
+      moveCursor()
+
+      const timer = setInterval(() => {
+        moveCursor()
+      }, 120)
+
+      setRepeatTimer(timer)
+    }
+
+    return () => {
+      // Limpiar intervalo para evitar más de un intervalo
+      // Tanto esta como la anterior limpieza son importantes como están ahora
+      if (repeatTimer) {
+        clearInterval(repeatTimer)
+      }
+    }
+  }, [ltvDirections])
 
   return {
     cursorStyles
