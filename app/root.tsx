@@ -15,7 +15,7 @@ export function Layout ({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className='flex items-center justify-center min-h-fit min-w-fit'>
         {children}
         <Scripts />
       </body>
