@@ -1,9 +1,9 @@
-import { web_description, handleWebTitle } from '~/lib/utils'
+import { web_description, createWebTitle } from '~/lib/utils'
 import type { Route } from './+types/home'
 
 export function meta ({}: Route.MetaArgs) {
   return [
-    { title: handleWebTitle('Página de inicio') },
+    { title: createWebTitle('Página de inicio') },
     web_description
   ]
 }

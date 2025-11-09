@@ -1,16 +1,16 @@
 import type { LtvDirections, Point } from '~/env'
 import { BASE_TITLE, WEB_DESCRIPTION } from './project_constants'
 
-export function handleWebTitle (title: string = '') {
+export function createWebTitle (title: string = '') {
   return title ? `${title} - ${BASE_TITLE}` : BASE_TITLE
 }
 
-export function handleWebDescription (description: string = '') {
+export function createWebDescription (description: string = '') {
   return description ? `${description} - ${WEB_DESCRIPTION}` : WEB_DESCRIPTION
 }
 
-export const web_title = { title: handleWebTitle() }
-export const web_description = { name: 'description', description: handleWebDescription() }
+export const web_title = { title: createWebTitle() }
+export const web_description = { name: 'description', description: createWebDescription() }
 
 export function getPositionInCamera (coordAxis: 'left' | 'top' = 'left', position: number) {
   if (!document || !window) return position
