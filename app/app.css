@@ -44,7 +44,7 @@ body {
 
 #console-layout {
   background: url('/console.svg') no-repeat center center;
-  background-size: 1364px;
+  background-size: var(--clw) var(--clh);
 }
 
 #cursor {
