@@ -28,11 +28,12 @@ body {
   width: 100%;
   margin: 0;
 
-  background: #525264;
+  /* background: #525264; */
+  background: black;
 
-  @media (prefers-color-scheme: light) {
+  /* @media (prefers-color-scheme: light) {
     background: #A8E7FB;
-  }
+  } */
 }
 
 #cursor {
