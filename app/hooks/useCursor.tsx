@@ -2,7 +2,7 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import { Temporal } from 'temporal-polyfill'
 import type { LtvDirections, Point, ValidKeys } from '~/env'
 import { calculateDirection, convertCSSUnitToNumber, getPositionInCamera, getPositionPlusDirection } from '~/lib/utils'
-import { HomeMap as map } from '~/maps/home'
+import { HomeMap as map } from '~/lib/maps/home'
 
 type HookProps = {
   borderSpacing: number
