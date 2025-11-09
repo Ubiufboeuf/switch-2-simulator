@@ -2,7 +2,7 @@ import { useEffect, useRef, type SyntheticEvent } from 'react'
 import { useNavigate } from 'react-router'
 import { web_description, web_title } from '~/lib/utils'
 import { useSwitchStore } from '~/stores/useSwitchStore'
-import type { Route } from './+types/index'
+import type { Route } from './+types/startup'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -11,7 +11,7 @@ export function meta ({}: Route.MetaArgs) {
   ]
 }
 
-export default function Index () {
+export default function Startup () {
   const navigate = useNavigate()
   
   const isConsoleOn = useSwitchStore((state) => state.isConsoleOn)
