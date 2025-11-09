@@ -1,4 +1,5 @@
 import { Link, Outlet } from 'react-router'
+import { Camera } from '~/components/Camera'
 
 export default function ConsoleLayout () {
   return (
@@ -10,7 +11,9 @@ export default function ConsoleLayout () {
         to='/'
         className='absolute left-[198.375px] top-[375.4px] w-[73.75px] h-[30.3px] rounded-full transition-colors hover:bg-neutral-300/10'
       />
-      <Outlet />
+      <Camera>
+        <Outlet />
+      </Camera>
     </div>
   )
 }
