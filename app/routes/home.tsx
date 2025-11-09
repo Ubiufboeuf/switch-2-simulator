@@ -10,6 +10,11 @@ export function meta ({}: Route.MetaArgs) {
 
 export default function Home () {
   return (
-    'home'
+    <>
+      <div
+        className='size-24 border-2 rounded-lg flex items-center justify-center not-[.selected]:backdrop-blur-[2px]'
+        data-id={'box'}
+      />
+    </>
   )
 }
