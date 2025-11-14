@@ -1,22 +1,10 @@
-import { useEffect } from 'react'
 import { Icon } from '../images/Icon'
-import { useMapStore } from '~/stores/useMapStore'
 import { Avatar } from '../images/Avatar'
 import { useUserStore } from '~/stores/useUserStore'
 
 export function SectionProfiles () {
-  const map = useMapStore((state) => state.map)
   const user = useUserStore((state) => state.user)
 
-  useEffect(() => {
-    if (!map) return
-
-    // const section = map.items.find((s) => s.name === 'section-profiles')
-
-    // if (!section) return
-    // setProfiles(section.items)
-  }, [map])
-  
   return (
     <section
       className='visual-section absolute left-[27.5px] top-[47px] h-[35.75px] w-[120px] rounded-full flex gap-[6.5px]'
@@ -25,7 +13,7 @@ export function SectionProfiles () {
       { user?.profiles.map(({ avatar }, idx) => (
         <article
           key={`box-profiles-${avatar}`}
-          className='visual-box h-full'
+          className='visual-box h-full rounded-full'
           data-profile-name={avatar}
           data-box-id={`item-1-${idx + 1}`}
         >
