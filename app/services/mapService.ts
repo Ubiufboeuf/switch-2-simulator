@@ -19,10 +19,14 @@ export async function useLoadMap (pathname: string) {
   }
 
   if (!map) return
-  setMap(map)
+  const mapToSet: Map = {
+    id: map.id,
+    items: []
+  }
+  setMap(mapToSet)
 
   for (const item of map.items) {
-    const box = createBox({ id: item.id })
+    const box = createBox(item)
     addBoxToMap(box)
   }
 }
@@ -37,8 +41,10 @@ export async function fetchMap (pathname: string): Promise<Map | undefined> {
 }
 
 export function addBoxToMap (box: Box | undefined) {
+  console.log('addBoxToMap')
   if (!box) return
 
-  const { map } = useMapStore.getState()
-  console.log(map, box)
+  const { addItem } = useMapStore.getState()
+  addItem(box)
+  // console.log('addBoxToMap', map, box)
 }
