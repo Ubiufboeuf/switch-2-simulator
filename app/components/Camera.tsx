@@ -1,7 +1,12 @@
 import type { ReactNode } from 'react'
 import { Cursor } from './Cursor'
+import { useLoadMap } from '~/services/mapService'
+import { useLocation } from 'react-router'
 
 export function Camera ({ children }: { children: ReactNode }) {
+  const location = useLocation()
+  useLoadMap(location.pathname)
+  
   return (
     <main
       id='camera'
