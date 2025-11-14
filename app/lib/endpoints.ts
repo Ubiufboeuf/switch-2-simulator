@@ -4,6 +4,6 @@ export const ENDPOINTS = {
   // USER: `${server_endpoint}/user/`
   USER: `${server_endpoint}/mocks/user.json`,
   MAPS: {
-    'home-map': `${server_endpoint}/mocks/`
+    'home-map': `${server_endpoint}/mocks/home-map.json`
   }
 }
