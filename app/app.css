@@ -46,3 +46,27 @@ body {
   transition-duration: 150ms;
   transition-timing-function: ease;
 }
+
+#cursor-border {
+  user-select: none;
+  pointer-events: none;
+  
+  --mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); 
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  border-radius: inherit;
+
+  #cursor-border-colors {
+    background: conic-gradient(
+      #1180F4,
+      #CFFDFD,
+      #866fdb,
+      #1e77d6,
+      #ca8dbc,
+      #1180F4
+    );
+    animation: spin 6s infinite linear;
+  }
+}
