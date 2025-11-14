@@ -9,7 +9,7 @@ export function Avatar ({ name, className = '' }: { name: keyof AvatarDimensions
     <div className={`${className} relative h-full w-full`}>
       <img
         src='/switchui/images/avatars_performance.webp'
-        className='absolute flex shink-0 object-top-left opacity-50'
+        className='absolute flex shink-0 object-top-left pointer-events-none'
         style={{
           left: avatar.left,
           top: avatar.top,
