@@ -11,6 +11,9 @@ export default function ConsoleLayout () {
         to='/'
         className='absolute left-[198.375px] top-[375.4px] w-[73.75px] h-[30.3px] rounded-full transition-colors hover:bg-neutral-300/10'
       />
+      <div className='absolute z-2 w-181 h-fit mr-[6px] mt-[12px]'>
+        <img src='/switchui/images/home.png' className='opacity-20 w-full' />
+      </div>
       <Camera>
         <Outlet />
       </Camera>
