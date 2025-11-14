@@ -1,4 +1,5 @@
 import type { Dimensions } from '~/types/uiTypes'
-import type { Avatars } from '../lib/avatars/avatarDimensions'
+import type { AvatarsList } from '../lib/avatars/avatarDimensions'
 
-export type AvatarDimensions = Record<keyof typeof Avatars, Dimensions>
+export type Avatars = keyof typeof AvatarsList
+export type AvatarDimensions = Record<Avatars, Dimensions>
