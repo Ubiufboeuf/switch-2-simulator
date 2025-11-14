@@ -22,11 +22,12 @@ export function SectionProfiles () {
       className='visual-section absolute left-[27.5px] top-[47px] h-[35.75px] w-[120px] rounded-full flex gap-[6.5px]'
       data-section-name='section-profiles'
     >
-      { user?.profiles.map(({ avatar }) => (
+      { user?.profiles.map(({ avatar }, idx) => (
         <article
           key={`box-profiles-${avatar}`}
           className='visual-box h-full'
           data-profile-name={avatar}
+          data-box-id={`item-1-${idx + 1}`}
         >
           <Icon className='bg-black/50 h-full w-[35.75px] rounded-full pointer-events-none'>
             <Avatar name={avatar} className='text-[4px]' />
