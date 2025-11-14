@@ -1,9 +1,6 @@
-type HookProps = {
-  borderSpacing: number
-  borderWidth: number
-}
+import type { CursorHookProps } from '~/types/cursorTypes'
 
-export function useCursor ({ borderWidth, borderSpacing }: HookProps) {
+export function useCursor ({ borderWidth, borderSpacing }: CursorHookProps) {
   return {
     cursorStyles: {}
   }
