@@ -28,7 +28,7 @@ export function SectionProfiles () {
           className='visual-box h-full'
           data-profile-name={avatar}
         >
-          <Icon className='bg-black/50 h-full w-[35.75px] rounded-full'>
+          <Icon className='bg-black/50 h-full w-[35.75px] rounded-full pointer-events-none'>
             <Avatar name={avatar} className='text-[4px]' />
           </Icon>
         </article>
