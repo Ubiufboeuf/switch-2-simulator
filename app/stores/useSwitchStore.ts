@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { ConsoleState } from '~/types/console'
+import type { ConsoleState } from '~/types/consoleTypes'
 
 type SwitchStore = {
   isConsoleOn: boolean
