@@ -1,12 +1,8 @@
-import type { Direction } from '~/env'
+import type { Box, Game } from './boxTypes'
 
 export interface Map {
   id: string
   items: MapItem[]
 }
 
-export interface MapItem {
-  id: string
-  selected?: boolean
-  topology?: Record<Direction, string>
-}
+export type MapItem = Box | Game
