@@ -1,5 +1,6 @@
 import { web_description, createWebTitle } from '~/lib/utils'
 import type { Route } from './+types/home'
+import { SectionProfiles } from '~/components/home/SectionProfiles'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -11,10 +12,7 @@ export function meta ({}: Route.MetaArgs) {
 export default function Home () {
   return (
     <>
-      <div
-        className='size-24 border-2 rounded-lg flex items-center justify-center not-[.selected]:backdrop-blur-[2px]'
-        data-id={'box'}
-      />
+      <SectionProfiles />
     </>
   )
 }
