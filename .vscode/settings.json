@@ -1,6 +1,7 @@
 {
   "conventionalCommits.scopes": [
     "home",
-    "cursor"
+    "cursor",
+    "camera"
   ]
 }
