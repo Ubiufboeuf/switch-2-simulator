@@ -8,6 +8,12 @@ type UserStore = {
   userName: Profile['userName'] | null
   birthDate: Profile['birthDate'] | null
   avatar: Profile['avatar'] | null
+  setUser: (user: User) => void
+  setUserId: (userId: User['id']) => void
+  setName: (name: Profile['name']) => void
+  setUserName: (userName: Profile['userName']) => void
+  setBirthDate: (birthDate: Profile['birthDate']) => void
+  setAvatar: (avatar: Profile['avatar']) => void
 }
 
 export const useUserStore = create<UserStore>((set) => ({
@@ -16,5 +22,11 @@ export const useUserStore = create<UserStore>((set) => ({
   name: null,
   userName: null,
   birthDate: null,
-  avatar: null
+  avatar: null,
+  setUser: (user: User) => set({ user }),
+  setUserId: (id: string) => set({ id }),
+  setName: (name) => set({ name }),
+  setUserName: (userName) => set({ userName }),
+  setBirthDate: (birthDate) => set({ birthDate }),
+  setAvatar: (avatar) => set({ avatar })
 }))
