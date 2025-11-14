@@ -1,6 +1,7 @@
 import { web_description, createWebTitle } from '~/lib/utils'
 import type { Route } from './+types/home'
 import { SectionProfiles } from '~/components/home/SectionProfiles'
+import { useLoadMocks } from '~/hooks/useLoadMocks'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -10,6 +11,8 @@ export function meta ({}: Route.MetaArgs) {
 }
 
 export default function Home () {
+  useLoadMocks()
+  
   return (
     <>
       <SectionProfiles />
