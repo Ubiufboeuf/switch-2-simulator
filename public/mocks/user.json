@@ -9,6 +9,24 @@
         "month": 9
       },
       "avatar": "mario"
+    },
+    {
+      "name": "Federico",
+      "userName": "mAngo",
+      "birthDate": {
+        "day": 19,
+        "month": 9
+      },
+      "avatar": "donkeyKong"
+    },
+    {
+      "name": "Federico",
+      "userName": "mAngo",
+      "birthDate": {
+        "day": 19,
+        "month": 9
+      },
+      "avatar": "anonymous"
     }
   ]
 }
