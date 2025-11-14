@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import type { ConsoleState } from '~/types/consoleTypes'
 
-type SwitchStore = {
+type ConsoleStore = {
   isConsoleOn: boolean
   consoleState: ConsoleState
   userId: string
@@ -9,7 +9,7 @@ type SwitchStore = {
   setConsoleState: (newState: ConsoleState) => void
 }
 
-export const useSwitchStore = create<SwitchStore>((set) => ({
+export const useConsoleStore = create<ConsoleStore>((set) => ({
   isConsoleOn: false,
   consoleState: 'off',
   userId: 'user-1',

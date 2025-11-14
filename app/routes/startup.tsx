@@ -1,7 +1,7 @@
 import { useEffect, useRef, type SyntheticEvent } from 'react'
 import { useNavigate } from 'react-router'
 import { web_description, web_title } from '~/lib/utils'
-import { useSwitchStore } from '~/stores/useSwitchStore'
+import { useConsoleStore } from '~/stores/useConsoleStore'
 import type { Route } from './+types/startup'
 
 export function meta ({}: Route.MetaArgs) {
@@ -14,8 +14,8 @@ export function meta ({}: Route.MetaArgs) {
 export default function Startup () {
   const navigate = useNavigate()
   
-  const isConsoleOn = useSwitchStore((state) => state.isConsoleOn)
-  const setIsConsoleOn = useSwitchStore((state) => state.setIsConsoleOn)
+  const isConsoleOn = useConsoleStore((state) => state.isConsoleOn)
+  const setIsConsoleOn = useConsoleStore((state) => state.setIsConsoleOn)
   
   const startupVideoRef = useRef<HTMLVideoElement | null>(null)
 
