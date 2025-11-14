@@ -12,8 +12,6 @@ export function Cursor ({ hidden }: { hidden?: boolean }) {
       className='absolute z-2 flex items-center justify-center'
       style={cursorStyles}
       hidden={hidden}
-    >
-      cursor
-    </article>
+    />
   )
 }
