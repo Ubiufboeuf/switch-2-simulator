@@ -5,6 +5,10 @@ import type { User } from '~/types/userTypes'
 const USER_ID = 'user-1'
 
 export async function useLoadUser () {
+  const { id } = useUserStore.getState()
+
+  if (id) return
+  
   let user = null
   try {
     user = await fetchUser(USER_ID)
