@@ -1,10 +1,14 @@
 {
   "id": "user-1",
-  "name": "Federico",
-  "userName": "mAngo",
-  "birthDate": {
-    "day": 19,
-    "month": 9
-  },
-  "avatar": "mario"
+  "profiles": [
+    {
+      "name": "Federico",
+      "userName": "mAngo",
+      "birthDate": {
+        "day": 19,
+        "month": 9
+      },
+      "avatar": "mario"
+    }
+  ]
 }
