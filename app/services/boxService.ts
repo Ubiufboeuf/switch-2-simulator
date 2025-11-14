@@ -1,8 +1,8 @@
-import type { Box } from '~/types/boxTypes'
+import type { Box, CreateBoxProps } from '~/types/boxTypes'
 
-export function createBox (): Box {
+export function createBox (props?: CreateBoxProps): Box {
   const box: Box = {
-    id: 'box-1'
+    id: props?.id ?? crypto.randomUUID()
   }
   
   return box
