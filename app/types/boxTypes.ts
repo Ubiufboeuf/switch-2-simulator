@@ -12,6 +12,9 @@ export interface Box {
   topology?: Record<Direction, string>
 }
 
-export interface Game extends Box {
-  id: string
+export interface Game {
+  game: string
+  assets: {
+    coverArt?: string
+  }
 }
