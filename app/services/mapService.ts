@@ -5,7 +5,7 @@ import type { Box } from '~/types/boxTypes'
 import type { Map } from '~/types/mapTypes'
 import { createBox } from './boxService'
 
-export async function useLoadMap (pathname: string) {
+export async function loadMap (pathname: string) {
   const state = useMapStore.getState()
   if (state.map) return
 

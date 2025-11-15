@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from 'react'
 import { Cursor } from './Cursor'
-import { useLoadMap } from '~/services/mapService'
+import { loadMap } from '~/services/mapService'
 import { useLocation } from 'react-router'
 
 let isMapLoaded = false
@@ -11,7 +11,7 @@ export function Camera ({ children }: { children: ReactNode }) {
   useEffect(() => {  
     if (isMapLoaded) return
     
-    useLoadMap(location.pathname)
+    loadMap(location.pathname)
     isMapLoaded = true
   }, [])
   
