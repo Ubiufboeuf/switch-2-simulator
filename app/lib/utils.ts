@@ -62,6 +62,9 @@ export function calculateDirection ({ down, left, right, up }: LtvDirections): P
     horizontalDirection = -1
   }
 
+  if (left && right) horizontalDirection = 0
+  if (up && down) verticalDirection = 0
+
   // Eliminar movimiento diagonal
   if (horizontalDirection !== 0 && verticalDirection !== 0) {
     // Con esto se prioriza, en un caso MUY improbable, el movimiento horizontal
