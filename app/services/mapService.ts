@@ -4,6 +4,7 @@ import { useMapStore } from '~/stores/useMapStore'
 import type { Box } from '~/types/boxTypes'
 import type { Map } from '~/types/mapTypes'
 import { createBox } from './boxService'
+import { useCursorStore } from '~/stores/useCursorStore'
 
 export async function loadMap (pathname: string) {
   const state = useMapStore.getState()
@@ -28,6 +29,10 @@ export async function loadMap (pathname: string) {
   for (const item of map.items) {
     const box = createBox(item)
     addBoxToMap(box)
+    if (box.selected) {
+      const { setSelectedBox } = useCursorStore.getState()
+      setSelectedBox(box.id)
+    }
   }
 }
 
