@@ -7,6 +7,7 @@ export interface CursorHookProps {
 }
 
 export interface Cursor {
+  selectedBoxId: string | null
   controller: {
     directions: Record<Direction, boolean>,
     directionAsPoint: DirectionAsPoint,
