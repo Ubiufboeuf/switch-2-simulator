@@ -1,8 +1,8 @@
-import type { Box, Game } from './boxTypes'
+import type { Box } from './boxTypes'
 
 export interface Map {
   id: string
   items: MapItem[]
 }
 
-export type MapItem = Box | Game
+export type MapItem = Box
