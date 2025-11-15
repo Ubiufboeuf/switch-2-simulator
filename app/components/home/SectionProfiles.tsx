@@ -12,7 +12,7 @@ export function SectionProfiles () {
     >
       { user?.profiles.map(({ avatar }, idx) => (
         <article
-          key={`box-profiles-${avatar}`}
+          key={`box-profiles-${idx}`}
           className='visual-box h-full rounded-full'
           data-profile-name={avatar}
           data-box-id={`item-1-${idx + 1}`}
