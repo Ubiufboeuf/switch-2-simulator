@@ -7,7 +7,6 @@ export interface CursorHookProps {
 }
 
 export interface Cursor {
-  id: string
   controller: {
     directions: Record<Direction, boolean>,
     directionAsPoint: DirectionAsPoint,
