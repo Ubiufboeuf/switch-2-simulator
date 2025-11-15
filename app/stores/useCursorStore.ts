@@ -1,7 +1,9 @@
 import { create } from 'zustand'
 import type { Cursor } from '~/types/cursorTypes'
+import { useMapStore } from './useMapStore'
 
-const cursor: Cursor = {
+const defaultCursor: Cursor = {
+  selectedBoxId: null,
   controller: {
     directions: {
       up: false,
@@ -19,10 +21,28 @@ const cursor: Cursor = {
   }  
 }
 
-type CursorStore = {
+type CursorStore = Cursor & {
   cursor: Cursor
+  setCursor: (cursor: Cursor) => void /* esto es simplemente por reactividad */
+  setSelectedBox: (id: string) => void
 }
 
 export const useCursorStore = create<CursorStore>((set) => ({
-  cursor
+  ...defaultCursor,
+  cursor: defaultCursor,
+  setCursor: (cursor) => set({ cursor }),
+  setSelectedBox: (selectedBoxId) => {
+    // Actualizar cursor
+    set(({ cursor }) => ({
+      cursor: {
+        ...cursor,
+        selectedBoxId
+      },
+      selectedBoxId
+    }))
+
+    // Actualizar mapa
+    const { setSelectedBox } = useMapStore.getState()
+    setSelectedBox(selectedBoxId)
+  }
 }))
