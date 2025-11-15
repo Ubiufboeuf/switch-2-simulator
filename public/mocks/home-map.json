@@ -29,6 +29,9 @@
       "topology": {
         "up": "item-1-1",
         "right": "item-2-2"
+      },
+      "actions": {
+        "right": "-scroll-x-1"
       }
     },
     {
@@ -43,7 +46,18 @@
       "id": "item-2-3",
       "topology": {
         "up": "item-1-1",
-        "left": "item-2-2"
+        "left": "item-2-2",
+        "right": "item-2-4"
+      }
+    },
+    {
+      "id": "item-2-4",
+      "topology": {
+        "up": "item-1-1",
+        "left": "item-2-3"
+      },
+      "actions": {
+        "right": "scroll-x-1"
       }
     }
   ]
