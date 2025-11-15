@@ -54,6 +54,22 @@
         "assets": {
           "coverArt": "/switchui/images/game-cover-art/mario_kart_8_deluxe-256.avif"
         }
+      },
+      {
+        "game": "Mario Kart 8 Deluxe",
+        "isDigital": true,
+        "isInserted": false,
+        "assets": {
+          "coverArt": "/switchui/images/game-cover-art/mario_kart_8_deluxe-256.avif"
+        }
+      },
+      {
+        "game": "Mario Kart 8 Deluxe",
+        "isDigital": true,
+        "isInserted": false,
+        "assets": {
+          "coverArt": "/switchui/images/game-cover-art/mario_kart_8_deluxe-256.avif"
+        }
       }
     ]
   }
