@@ -128,7 +128,7 @@ export function useCursor ({ borderWidth, borderSpacing }: CursorHookProps) {
 
       const timer = setInterval(() => {
         moveCursor()
-      }, 120)
+      }, 300)
 
       setRepeatTimerId(timer)
     }
