@@ -48,7 +48,7 @@ export function calculateDirection ({ down, left, right, up }: LtvDirections): P
   const lastVertical = Math.max(up, down)
   const lastHorizontal = Math.max(left, right)
 
-  // Prioridad horizontal
+  // Prioridad vertical
   if (down === lastVertical && down !== 0) {
     verticalDirection = 1
   } else if (up === lastVertical && up !== 0) {
