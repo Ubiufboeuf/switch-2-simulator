@@ -143,7 +143,6 @@ export function useCursor ({ borderWidth, borderSpacing }: CursorHookProps) {
   }, [directions])
   
   useEffect(() => {
-    console.log('effect', items)
     loadInitialPosition()
   }, [items])
   
