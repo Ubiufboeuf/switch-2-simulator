@@ -1,4 +1,4 @@
-import type { LtvDirections, Point } from '~/env'
+import type { Direction, LtvDirections, Point } from '~/env'
 import { BASE_TITLE, WEB_DESCRIPTION } from './project_constants'
 
 export function createWebTitle (title: string = '') {
@@ -83,3 +83,9 @@ export function getPositionPlusDirection (position: Point, direction: Point) {
   }
 }
 
+export function convertPointToDirection ({ x, y }: Point): Direction | undefined {
+  if (x > 0) return 'right'
+  if (x < 0) return 'left'
+  if (y > 0) return 'down'
+  if (y < 0) return 'up'
+}
