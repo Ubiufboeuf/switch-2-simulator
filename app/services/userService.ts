@@ -4,7 +4,7 @@ import type { User } from '~/types/userTypes'
 
 const USER_ID = 'user-1'
 
-export async function useLoadUser () {
+export async function loadUser () {
   const { id } = useUserStore.getState()
 
   if (id) return

@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { useLoadUser } from '~/services/userService'
+import { loadUser } from '~/services/userService'
 
 export function useLoadMocks () {
   useEffect(() => {
-    useLoadUser()    
+    loadUser()    
   }, [])
 }
