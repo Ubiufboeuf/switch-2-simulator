@@ -6,6 +6,7 @@ type MapStore = {
   items: MapItem[] | null
   setMap: (map: Map) => void
   addItem: (item: MapItem) => void
+  setSelectedBox: (selectedBoxId: string) => void
 }
 
 export const useMapStore = create<MapStore>((set) => ({
@@ -23,6 +24,24 @@ export const useMapStore = create<MapStore>((set) => ({
           items: [...newItems]
         },
         items: [...newItems]
+      }
+    })
+  },
+  setSelectedBox: (id) => {
+    set(({ map }) => {
+      if (!map) return {}
+
+      const newItems = [...map.items.map((i) => {
+        i.selected = i.id === id
+        return i
+      })]
+
+      return {
+        map: {
+          ...map,
+          items: newItems
+        },
+        items: newItems
       }
     })
   }
