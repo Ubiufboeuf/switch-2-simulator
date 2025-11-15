@@ -57,15 +57,13 @@ export function useCursor ({ borderWidth, borderSpacing }: CursorHookProps) {
   }
 
   function handleKeyDown (event: KeyboardEvent) {
+    if (event.repeat) return
+    
     const key = cursor?.controller.keyboard?.find(({ key }) => key === event.key)
     if (!key) return
 
     // Conseguir dirección
     const direction = key.direction
-    
-    // // Si la dirección está presionada, ignorar
-    // console.log('directions', directions[direction])
-    // if (directions[direction] !== 0) return
 
     // Actualizar direcciones
     setDirections((prev) => ({
