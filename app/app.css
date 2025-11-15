@@ -42,7 +42,7 @@ body {
 }
 
 #cursor {
-  transition-property: left, top;
+  transition-property: left, top, height, width;
   transition-duration: 150ms;
   transition-timing-function: ease;
 }
