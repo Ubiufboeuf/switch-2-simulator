@@ -1,6 +1,7 @@
 import './app.css'
 import { Links, Meta, Outlet, Scripts } from 'react-router'
 import type { ReactNode } from 'react'
+import { DebugPanel } from './components/DebugPanel'
 
 export default function App () {
   return <Outlet />
@@ -16,6 +17,7 @@ export function Layout ({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body className='flex items-center justify-center min-h-fit min-w-fit'>
+        <DebugPanel />
         {children}
         <Scripts />
       </body>
