@@ -46,10 +46,8 @@ export async function fetchMap (pathname: string): Promise<Map | undefined> {
 }
 
 export function addBoxToMap (box: Box | undefined) {
-  console.log('addBoxToMap')
   if (!box) return
 
   const { addItem } = useMapStore.getState()
   addItem(box)
-  // console.log('addBoxToMap', map, box)
 }
