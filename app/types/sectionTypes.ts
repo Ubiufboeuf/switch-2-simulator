@@ -5,5 +5,4 @@ export interface Section {
   items: SectionItem[]
 }
 
-
 export type SectionItem = Box
