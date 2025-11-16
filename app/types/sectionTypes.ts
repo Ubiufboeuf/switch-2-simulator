@@ -1,3 +1,9 @@
-import type { Box, Game } from '~/types/boxTypes'
+import type { Box } from './boxTypes'
 
-export type SectionItem = Box | Game
+export interface Section {
+  id: string
+  items: SectionItem[]
+}
+
+
+export type SectionItem = Box
