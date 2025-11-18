@@ -8,6 +8,7 @@ import type { MapItem } from '~/types/mapTypes'
 export function createBox (props?: CreateBoxProps): Box {
   const box: Box = {
     id: props?.id ?? crypto.randomUUID(),
+    type: 'box',
     selected: props?.selected,
     topology: props?.topology
   }
@@ -16,7 +17,7 @@ export function createBox (props?: CreateBoxProps): Box {
 }
 
 export function getSelectedBox (items: MapItem[] | undefined | null) {
-  const box = items?.find((i) => i.selected)
+  const box = items?.find((i) => i.type === 'box' && i.selected)
   const element = document.querySelector(`[data-box-id="${box?.id}"]`) as HTMLElement | null
   return {
     box,

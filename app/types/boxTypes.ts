@@ -8,6 +8,7 @@ export interface CreateBoxProps {
 
 export interface Box {
   id: string
+  type: 'box'
   selected?: boolean
   topology?: Record<Direction, string>
 }
