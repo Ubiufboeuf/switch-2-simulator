@@ -50,9 +50,6 @@
       "topology": {
         "up": "box-1-1",
         "right": "box-2-2"
-      },
-      "actions": {
-        "right": "-scroll-x-1"
       }
     },
     {
@@ -79,9 +76,6 @@
       "topology": {
         "up": "box-1-1",
         "left": "box-2-3"
-      },
-      "actions": {
-        "right": "scroll-x-1"
       }
     }
   ]
