@@ -1,4 +1,5 @@
 import type { Direction } from '~/env'
+import type { BOX } from '~/lib/constants'
 
 export interface CreateBoxProps {
   id?: string
@@ -8,7 +9,7 @@ export interface CreateBoxProps {
 
 export interface Box {
   id: string
-  type: 'box'
+  type: typeof BOX
   selected?: boolean
   topology?: Record<Direction, string>
 }

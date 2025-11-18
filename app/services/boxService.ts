@@ -1,4 +1,5 @@
 import type { Point } from '~/env'
+import { BOX } from '~/lib/constants'
 import { convertPointToDirection } from '~/lib/utils'
 import { useCursorStore } from '~/stores/useCursorStore'
 import { useMapStore } from '~/stores/useMapStore'
@@ -8,7 +9,7 @@ import type { MapItem } from '~/types/mapTypes'
 export function createBox (props?: CreateBoxProps): Box {
   const box: Box = {
     id: props?.id ?? crypto.randomUUID(),
-    type: 'box',
+    type: BOX,
     selected: props?.selected,
     topology: props?.topology
   }
@@ -17,7 +18,7 @@ export function createBox (props?: CreateBoxProps): Box {
 }
 
 export function getSelectedBox (items: MapItem[] | undefined | null) {
-  const box = items?.find((i) => i.type === 'box' && i.selected)
+  const box = items?.find((i) => i.type === BOX && i.selected)
   const element = document.querySelector(`[data-box-id="${box?.id}"]`) as HTMLElement | null
   return {
     box,

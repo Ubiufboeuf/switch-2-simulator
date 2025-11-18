@@ -1,8 +1,9 @@
+import type { SECTION } from '~/lib/constants'
 import type { Box } from './boxTypes'
 
 export interface Section {
   id: string
-  type: 'section'
+  type: typeof SECTION
   items: SectionItem[]
 }
 
