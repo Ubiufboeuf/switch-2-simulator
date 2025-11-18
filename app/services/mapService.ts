@@ -34,6 +34,11 @@ export async function loadMap (pathname: string) {
 
   for (const item of map.items) {
     const loadItem = listOfLoaders[item.type]
+    if (!item.type) {
+      console.error('No hay función para cargar el item:', item)
+      continue
+    }
+    
     loadItem(item)
   }
 }
