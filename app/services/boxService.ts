@@ -37,13 +37,13 @@ export function findBoxToSelect ({ x, y }: Point) {
 
   if (!selectedBoxId || !items) return
 
-  const box = items.find((i) => i.id === selectedBoxId)
-  if (!box) return
+  const item = items.find((i) => i.id === selectedBoxId)
+  if (item?.type !== BOX) return
 
   const direction = convertPointToDirection({ x, y })
   if (!direction) return
   
-  const newBoxId = box.topology?.[direction]
+  const newBoxId = item.topology?.[direction]
   const newBox = getBoxById(newBoxId)
   if (!newBox) return
   
