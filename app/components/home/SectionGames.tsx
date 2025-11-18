@@ -24,7 +24,7 @@ export function SectionGames () {
               key={`box-game-${idx}`}
               className='visual-box h-full rounded-[10px] aspect-square'
               data-game-name={game}
-              data-box-id={`item-2-${idx + 1}`}
+              data-box-id={`box-2-${idx + 1}`}
             >
               <div className='h-full w-full rounded-[inherit] overflow-hidden'>
                 <img

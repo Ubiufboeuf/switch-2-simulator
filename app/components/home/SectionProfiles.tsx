@@ -15,7 +15,7 @@ export function SectionProfiles () {
           key={`box-profiles-${idx}`}
           className='visual-box h-full rounded-full'
           data-profile-name={avatar}
-          data-box-id={`item-1-${idx + 1}`}
+          data-box-id={`box-1-${idx + 1}`}
         >
           <Icon className='bg-black/50 h-full w-[35.75px] rounded-full pointer-events-none'>
             <Avatar name={avatar} className='text-[4px]' />
