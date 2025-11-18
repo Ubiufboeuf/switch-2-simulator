@@ -2,9 +2,15 @@ import { ENDPOINTS } from '~/lib/endpoints'
 import { isValidMap } from '~/lib/validations'
 import { useMapStore } from '~/stores/useMapStore'
 import type { Box } from '~/types/boxTypes'
-import type { Map } from '~/types/mapTypes'
+import type { Map, MapItem } from '~/types/mapTypes'
 import { createBox } from './boxService'
 import { useCursorStore } from '~/stores/useCursorStore'
+import { BOX, SECTION } from '~/lib/constants'
+
+const listOfLoaders: Record<MapItem['type'], (item: MapItem) => void> = {
+  'box': loadBox,
+  'section': loadSection
+}
 
 export async function loadMap (pathname: string) {
   const state = useMapStore.getState()
@@ -27,12 +33,8 @@ export async function loadMap (pathname: string) {
   setMap(mapToSet)
 
   for (const item of map.items) {
-    const box = createBox(item)
-    addBoxToMap(box)
-    if (box.selected) {
-      const { setSelectedBox } = useCursorStore.getState()
-      setSelectedBox(box.id)
-    }
+    const loadItem = listOfLoaders[item.type]
+    loadItem(item)
   }
 }
 
@@ -43,6 +45,21 @@ export async function fetchMap (pathname: string): Promise<Map | undefined> {
   if (!isValidMap(map)) return
 
   return map
+}
+
+function loadBox (item: MapItem) {
+  if (item.type !== BOX) return // type guard
+
+  const box = createBox(item)
+  addBoxToMap(box)
+  if (box.selected) {
+    const { setSelectedBox } = useCursorStore.getState()
+    setSelectedBox(box.id)
+  }
+}
+
+function loadSection (item: MapItem) {
+  if (item.type !== SECTION) return
 }
 
 export function addBoxToMap (box: Box | undefined) {
