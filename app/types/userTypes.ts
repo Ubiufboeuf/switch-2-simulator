@@ -1,5 +1,5 @@
 import type { Avatars } from './avatarTypes'
-import type { Game } from './boxTypes'
+import type { Game } from './gameTypes'
 
 export interface User {
   id: string

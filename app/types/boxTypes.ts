@@ -13,10 +13,3 @@ export interface Box {
   selected?: boolean
   topology?: Record<Direction, string>
 }
-
-export interface Game {
-  game: string
-  assets: {
-    coverArt?: string
-  }
-}
