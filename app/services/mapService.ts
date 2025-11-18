@@ -53,7 +53,9 @@ export async function fetchMap (pathname: string): Promise<Map | undefined> {
 }
 
 function loadBox (item: MapItem) {
-  if (item.type !== BOX) return // type guard
+  if (item.type !== BOX) return
+
+  console.log('box', item)
 
   const box = createBox(item)
   addBoxToMap(box)
@@ -63,8 +65,14 @@ function loadBox (item: MapItem) {
   }
 }
 
-function loadSection (item: MapItem) {
-  if (item.type !== SECTION) return
+function loadSection (section: MapItem) {
+  if (section.type !== SECTION) return
+
+  console.log('section', section)
+
+  for (const box of section.items) {
+    loadBox(box)
+  }
 }
 
 export function addBoxToMap (box: Box | undefined) {
