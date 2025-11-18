@@ -2,59 +2,59 @@
   "id": "home-map",
   "items": [
     {
-      "id": "item-1-1",
+      "id": "box-1-1",
       "topology": {
-        "down": "item-2-1",
-        "right": "item-1-2"
+        "down": "box-2-1",
+        "right": "box-1-2"
       }
     },
     {
-      "id": "item-1-2",
+      "id": "box-1-2",
       "topology": {
-        "down": "item-2-1",
-        "left": "item-1-1",
-        "right": "item-1-3"
+        "down": "box-2-1",
+        "left": "box-1-1",
+        "right": "box-1-3"
       }
     },
     {
-      "id": "item-1-3",
+      "id": "box-1-3",
       "topology": {
-        "down": "item-2-1",
-        "left": "item-1-2"
+        "down": "box-2-1",
+        "left": "box-1-2"
       }
     },
     {
-      "id": "item-2-1",
+      "id": "box-2-1",
       "selected": true,
       "topology": {
-        "up": "item-1-1",
-        "right": "item-2-2"
+        "up": "box-1-1",
+        "right": "box-2-2"
       },
       "actions": {
         "right": "-scroll-x-1"
       }
     },
     {
-      "id": "item-2-2",
+      "id": "box-2-2",
       "topology": {
-        "up": "item-1-1",
-        "left": "item-2-1",
-        "right": "item-2-3"
+        "up": "box-1-1",
+        "left": "box-2-1",
+        "right": "box-2-3"
       }
     },
     {
-      "id": "item-2-3",
+      "id": "box-2-3",
       "topology": {
-        "up": "item-1-1",
-        "left": "item-2-2",
-        "right": "item-2-4"
+        "up": "box-1-1",
+        "left": "box-2-2",
+        "right": "box-2-4"
       }
     },
     {
-      "id": "item-2-4",
+      "id": "box-2-4",
       "topology": {
-        "up": "item-1-1",
-        "left": "item-2-3"
+        "up": "box-1-1",
+        "left": "box-2-3"
       },
       "actions": {
         "right": "scroll-x-1"
