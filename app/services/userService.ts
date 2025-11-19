@@ -1,4 +1,4 @@
-import { ENDPOINTS } from '~/lib/endpoints'
+import { ENDPOINTS } from '~/lib/constants/endpoints'
 import { useUserStore } from '~/stores/useUserStore'
 import type { User } from '~/types/userTypes'
 

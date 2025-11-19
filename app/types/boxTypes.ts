@@ -1,5 +1,5 @@
 import type { Direction } from '~/env'
-import type { BOX } from '~/lib/constants'
+import type { BOX } from '~/lib/constants/constants'
 
 export interface CreateBoxProps {
   id?: string

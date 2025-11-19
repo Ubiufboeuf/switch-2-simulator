@@ -1,5 +1,5 @@
 import type { Point } from '~/env'
-import { BOX } from '~/lib/constants'
+import { BOX } from '~/lib/constants/constants'
 import { convertPointToDirection } from '~/lib/utils'
 import { useCursorStore } from '~/stores/useCursorStore'
 import { useMapStore } from '~/stores/useMapStore'

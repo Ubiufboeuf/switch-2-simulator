@@ -1,4 +1,4 @@
-import type { SECTION } from '~/lib/constants'
+import type { SECTION } from '~/lib/constants/constants'
 import type { Box } from './boxTypes'
 
 export interface Section {

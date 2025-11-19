@@ -1,5 +1,5 @@
 import type { Direction, LtvDirections, Point } from '~/env'
-import { BASE_TITLE, WEB_DESCRIPTION } from './project_constants'
+import { BASE_TITLE, WEB_DESCRIPTION } from './constants/project_info'
 
 export function createWebTitle (title: string = '') {
   return title ? `${title} - ${BASE_TITLE}` : BASE_TITLE

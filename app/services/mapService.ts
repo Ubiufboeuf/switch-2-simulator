@@ -1,11 +1,11 @@
-import { ENDPOINTS } from '~/lib/endpoints'
+import { ENDPOINTS } from '~/lib/constants/endpoints'
 import { isValidMap } from '~/lib/validations'
 import { useMapStore } from '~/stores/useMapStore'
 import type { Box } from '~/types/boxTypes'
 import type { Map, MapItem } from '~/types/mapTypes'
 import { createBox } from './boxService'
 import { useCursorStore } from '~/stores/useCursorStore'
-import { BOX, SECTION } from '~/lib/constants'
+import { BOX, SECTION } from '~/lib/constants/constants'
 
 const listOfLoaders: Record<MapItem['type'], (item: MapItem) => void> = {
   'box': loadBox,
