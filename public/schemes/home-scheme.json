@@ -5,15 +5,14 @@
       "id": "section-1",
       "type": "section",
       "topology": {
-        "down": "box-2-1"
+        "down": "section-2"
       },
-      "boxToReturn": "box-2-1",
+      "boxToReturn": "box-1-1",
       "items": [
         {
           "id": "box-1-1",
           "type": "box",
           "topology": {
-            "down": "box-2-1",
             "right": "box-1-2"
           }
         },
@@ -21,7 +20,6 @@
           "id": "box-1-2",
           "type": "box",
           "topology": {
-            "down": "box-2-1",
             "left": "box-1-1",
             "right": "box-1-3"
           }
@@ -30,7 +28,6 @@
           "id": "box-1-3",
           "type": "box",
           "topology": {
-            "down": "box-2-1",
             "left": "box-1-2"
           }
         }
@@ -44,39 +41,45 @@
       ]
     },
     {
-      "id": "box-2-1",
-      "type": "box",
-      "selected": true,
+      "id": "section-2",
+      "type": "section",
       "topology": {
-        "up": "box-1-1",
-        "right": "box-2-2"
-      }
-    },
-    {
-      "id": "box-2-2",
-      "type": "box",
-      "topology": {
-        "up": "box-1-1",
-        "left": "box-2-1",
-        "right": "box-2-3"
-      }
-    },
-    {
-      "id": "box-2-3",
-      "type": "box",
-      "topology": {
-        "up": "box-1-1",
-        "left": "box-2-2",
-        "right": "box-2-4"
-      }
-    },
-    {
-      "id": "box-2-4",
-      "type": "box",
-      "topology": {
-        "up": "box-1-1",
-        "left": "box-2-3"
-      }
+        "up": "section-1"
+      },
+      "boxToReturn": "box-2-1",
+      "items": [
+        {
+          "id": "box-2-1",
+          "type": "box",
+          "selected": true,
+          "topology": {
+            "right": "box-2-2"
+          }
+        },
+        {
+          "id": "box-2-2",
+          "type": "box",
+          "topology": {
+            "left": "box-2-1",
+            "right": "box-2-3"
+          }
+        },
+        {
+          "id": "box-2-3",
+          "type": "box",
+          "topology": {
+            "left": "box-2-2",
+            "right": "box-2-4"
+          }
+        },
+        {
+          "id": "box-2-4",
+          "type": "box",
+          "topology": {
+            "left": "box-2-3"
+          }
+        }
+      ]
     }
   ]
 }
