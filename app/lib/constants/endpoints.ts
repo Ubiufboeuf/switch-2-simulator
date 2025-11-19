@@ -1,9 +1,9 @@
-export const server_endpoint: string = import.meta.env.VITE_SERVER_ENDPOINT
+import { SERVER_ENDPOINT } from './env_vars'
 
 export const ENDPOINTS = {
-  // USER: `${server_endpoint}/user/`
-  USER: `${server_endpoint}/mocks/user.json`,
+  // USER: `${SERVER_ENDPOINT}/user/`
+  USER: `${SERVER_ENDPOINT}/mocks/user.json`,
   MAPS: {
-    'home-map': `${server_endpoint}/mocks/home-map.json`
+    'home-map': `${SERVER_ENDPOINT}/mocks/home-map.json`
   }
 }
