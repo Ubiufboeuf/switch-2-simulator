@@ -7,6 +7,7 @@ type MapStore = {
   items: Section[] | null
   setMap: (map: Map) => void
   addItem: (item: Section) => void
+  updateItem: (id: string, section: Section) => void
   setSelectedBox: (selectedBoxId: string) => void
 }
 
@@ -25,6 +26,29 @@ export const useMapStore = create<MapStore>((set) => ({
           items: [...newItems]
         },
         items: [...newItems]
+      }
+    })
+  },
+  updateItem (id, sectionToUpdate) {
+    set(({ map }) => {
+      if (!map) return {}
+
+      const newItems: Section[] = []
+
+      for (const section of [...map.items]) {
+        if (section.id === id) {
+          newItems.push(sectionToUpdate)
+          continue
+        }
+        newItems.push(section)
+      }
+      
+      return {
+        map: {
+          ...map,
+          items: newItems
+        },
+        items: newItems
       }
     })
   },

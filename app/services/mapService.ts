@@ -5,13 +5,8 @@ import type { Box } from '~/types/boxTypes'
 import type { Map } from '~/types/mapTypes'
 import { createBox } from './boxService'
 import { useCursorStore } from '~/stores/useCursorStore'
-import { BOX, SECTION } from '~/lib/constants/constants'
 import type { Section } from '~/types/sectionTypes'
-
-// const listOfLoaders: Record<Section['type'], (item: Section) => void> = {
-//   'box': loadBox,
-//   'section': loadSection
-// }
+import { useSectionStore } from '~/stores/useSectionStore'
 
 export async function loadMap (pathname: string) {
   const state = useMapStore.getState()
@@ -27,20 +22,14 @@ export async function loadMap (pathname: string) {
   }
 
   if (!map) return
-  const mapToSet: Map = {
+  const newMap: Map = {
     id: map.id,
     items: []
   }
-  setMap(mapToSet)
+  setMap(newMap)
 
-  for (const item of map.items) {
-    // const loadItem = listOfLoaders[item.type]
-    if (!item.type) {
-      console.error('No hay función para cargar el item:', item)
-      continue
-    }
-    
-    // loadItem(item)
+  for (const section of map.items) {
+    loadSection(section)
   }
 }
 
@@ -53,13 +42,12 @@ export async function fetchMap (pathname: string): Promise<Map | undefined> {
   return map
 }
 
-function loadBox (item: Box) {
-  if (item.type !== BOX) return
-
-  console.log('box', item)
+function loadBox (item: Box, section: Section) {
+  console.log('loadBox', item)
 
   const box = createBox(item)
-  addBoxToMap(box)
+  addBoxToSection(box, section)
+
   if (box.selected) {
     const { setSelectedBox } = useCursorStore.getState()
     setSelectedBox(box.id)
@@ -67,18 +55,23 @@ function loadBox (item: Box) {
 }
 
 function loadSection (section: Section) {
-  if (section.type !== SECTION) return
-
-  console.log('section', section)
+  console.log('loadSection', section)
 
   for (const box of section.items) {
-    loadBox(box)
+    loadBox(box, section)
   }
 }
 
-export function addBoxToMap (box: Box | undefined) {
-  if (!box) return
+export function addSectionToMap (section: Section) {
+  if (!section) return
 
   const { addItem } = useMapStore.getState()
-  // addItem(box)
+  addItem(section)
+}
+
+export function addBoxToSection (box: Box, section: Section) {
+  if (!box || !section) return
+
+  const { addBox } = useSectionStore.getState()
+  addBox(box, section)
 }
