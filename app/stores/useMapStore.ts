@@ -42,13 +42,13 @@ export const useMapStore = create<MapStore>((set) => ({
         }
         newItems.push(section)
       }
-      
+
       return {
         map: {
           ...map,
-          items: newItems
+          items: [...newItems]
         },
-        items: newItems
+        items: [...newItems]
       }
     })
   },
@@ -68,9 +68,9 @@ export const useMapStore = create<MapStore>((set) => ({
       return {
         map: {
           ...map,
-          items: newItems
+          items: [...newItems]
         },
-        items: newItems
+        items: [...newItems]
       }
     })
   }
