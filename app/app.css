@@ -4,7 +4,7 @@
   font-family: Inter;
   src:
     local('Inter')
-    url('/Inter.woff2');
+    url('/switchui/Inter.woff2');
 }
 
 @theme {
@@ -39,7 +39,7 @@ body {
 }
 
 #console-layout {
-  background: url('/console.svg') no-repeat center center;
+  background: url('/switchui/console.svg') no-repeat center center;
   background-size: var(--clw) var(--clh);
 }
 

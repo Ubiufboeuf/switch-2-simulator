@@ -14,6 +14,7 @@ export function Layout ({ children }: { children: ReactNode }) {
       <head>
         <meta charSet='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='shortcut icon' href='/switchui/favicon.ico' type='image/x-icon' />
         <Meta />
         <Links />
       </head>
