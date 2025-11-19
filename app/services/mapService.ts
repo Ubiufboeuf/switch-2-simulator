@@ -45,7 +45,7 @@ export async function loadMap (pathname: string) {
 }
 
 export async function fetchMap (pathname: string): Promise<Map | undefined> {
-  const res = await fetch(ENDPOINTS.STRUCTURES['home-structure'])
+  const res = await fetch(ENDPOINTS.SCHEMES.HOME)
   const map = await res.json()
 
   if (!isValidMap(map)) return
