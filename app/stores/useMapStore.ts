@@ -1,11 +1,12 @@
 import { create } from 'zustand'
-import type { Map, MapItem } from '~/types/mapTypes'
+import type { Map } from '~/types/mapTypes'
+import type { Section } from '~/types/sectionTypes'
 
 type MapStore = {
   map: Map | null
-  items: MapItem[] | null
+  items: Section[] | null
   setMap: (map: Map) => void
-  addItem: (item: MapItem) => void
+  addItem: (item: Section) => void
   setSelectedBox: (selectedBoxId: string) => void
 }
 
@@ -31,10 +32,14 @@ export const useMapStore = create<MapStore>((set) => ({
     set(({ map }) => {
       if (!map) return {}
 
-      const newItems = [...map.items.map((i) => {
-        i.selected = i.id === id
-        return i
-      })]
+      const newItems: Section[] = []
+
+      for (const section of map.items) {
+        for (const box of section.items) {
+          box.selected = box.id === id
+        }
+        newItems.push(section)
+      }
 
       return {
         map: {

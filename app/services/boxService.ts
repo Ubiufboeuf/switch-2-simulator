@@ -4,7 +4,7 @@ import { convertPointToDirection } from '~/lib/utils'
 import { useCursorStore } from '~/stores/useCursorStore'
 import { useMapStore } from '~/stores/useMapStore'
 import type { Box, CreateBoxProps } from '~/types/boxTypes'
-import type { MapItem } from '~/types/mapTypes'
+import type { Section } from '~/types/sectionTypes'
 
 export function createBox (props?: CreateBoxProps): Box {
   const box: Box = {
@@ -17,18 +17,28 @@ export function createBox (props?: CreateBoxProps): Box {
   return box
 }
 
-export function getSelectedBox (items: MapItem[] | undefined | null) {
-  const box = items?.find((i) => i.type === BOX && i.selected)
-  const element = document.querySelector(`[data-box-id="${box?.id}"]`) as HTMLElement | null
+export function getSelectedBox (mapItems: Section[] | undefined | null) {
+  let selectedBox
+  for (const section of mapItems || []) {
+    for (const box of section.items) {
+      if (box.selected) selectedBox = box
+    }
+  }
+  
+  const element = document.querySelector(`[data-box-id="${selectedBox?.id}"]`) as HTMLElement | null
   return {
-    box,
+    box: selectedBox,
     element
   }
 }
 
 export function getBoxById (id: string | undefined) {
   const { items } = useMapStore.getState()
-  return items?.find((i) => i.id === id)
+  for (const section of items || []) {
+    for (const box of section.items) {
+      if (box.id === id) return box
+    }
+  }
 }
 
 export function findBoxToSelect ({ x, y }: Point) {
@@ -37,13 +47,17 @@ export function findBoxToSelect ({ x, y }: Point) {
 
   if (!selectedBoxId || !items) return
 
-  const item = items.find((i) => i.id === selectedBoxId)
-  if (item?.type !== BOX) return
+  let selectedBox
+  for (const section of items || []) {
+    for (const box of section.items) {
+      if (box.id === selectedBoxId) selectedBox = box
+    }
+  }
 
   const direction = convertPointToDirection({ x, y })
   if (!direction) return
   
-  const newBoxId = item.topology?.[direction]
+  const newBoxId = selectedBox?.topology?.[direction]
   const newBox = getBoxById(newBoxId)
   if (!newBox) return
   

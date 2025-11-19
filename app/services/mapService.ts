@@ -2,15 +2,16 @@ import { ENDPOINTS } from '~/lib/constants/endpoints'
 import { isValidMap } from '~/lib/validations'
 import { useMapStore } from '~/stores/useMapStore'
 import type { Box } from '~/types/boxTypes'
-import type { Map, MapItem } from '~/types/mapTypes'
+import type { Map } from '~/types/mapTypes'
 import { createBox } from './boxService'
 import { useCursorStore } from '~/stores/useCursorStore'
 import { BOX, SECTION } from '~/lib/constants/constants'
+import type { Section } from '~/types/sectionTypes'
 
-const listOfLoaders: Record<MapItem['type'], (item: MapItem) => void> = {
-  'box': loadBox,
-  'section': loadSection
-}
+// const listOfLoaders: Record<Section['type'], (item: Section) => void> = {
+//   'box': loadBox,
+//   'section': loadSection
+// }
 
 export async function loadMap (pathname: string) {
   const state = useMapStore.getState()
@@ -33,13 +34,13 @@ export async function loadMap (pathname: string) {
   setMap(mapToSet)
 
   for (const item of map.items) {
-    const loadItem = listOfLoaders[item.type]
+    // const loadItem = listOfLoaders[item.type]
     if (!item.type) {
       console.error('No hay función para cargar el item:', item)
       continue
     }
     
-    loadItem(item)
+    // loadItem(item)
   }
 }
 
@@ -52,7 +53,7 @@ export async function fetchMap (pathname: string): Promise<Map | undefined> {
   return map
 }
 
-function loadBox (item: MapItem) {
+function loadBox (item: Box) {
   if (item.type !== BOX) return
 
   console.log('box', item)
@@ -65,7 +66,7 @@ function loadBox (item: MapItem) {
   }
 }
 
-function loadSection (section: MapItem) {
+function loadSection (section: Section) {
   if (section.type !== SECTION) return
 
   console.log('section', section)
@@ -79,5 +80,5 @@ export function addBoxToMap (box: Box | undefined) {
   if (!box) return
 
   const { addItem } = useMapStore.getState()
-  addItem(box)
+  // addItem(box)
 }

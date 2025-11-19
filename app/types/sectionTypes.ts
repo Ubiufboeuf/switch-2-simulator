@@ -4,7 +4,5 @@ import type { Box } from './boxTypes'
 export interface Section {
   id: string
   type: typeof SECTION
-  items: SectionItem[]
+  items: Box[]
 }
-
-export type SectionItem = Box
