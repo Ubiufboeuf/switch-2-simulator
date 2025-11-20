@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react'
 import { Temporal } from 'temporal-polyfill'
+import { parseTimestamp } from '~/lib/utils'
+import type { TimeFormat, TimeSystem } from '~/types/uiTypes'
 
 export function Time () {
-  const [time, setTime] = useState('--:--')
+  const [time, setTime] = useState<string>('--:--')
+  const [format, setFormat] = useState<TimeFormat>('12 hrs')
+  const [timeSystem, setTimeSystem] = useState<TimeSystem>(null)
 
   function updateTime () {
     const instant =  Temporal.Now.instant()
-    const zdt = instant.toZonedDateTimeISO(Temporal.Now.timeZoneId())
-    const time = `${zdt.hour}:${zdt.minute}`
+    const { time, format, timeSystem } = parseTimestamp(instant.epochMilliseconds, { format: '12 hrs', output: 'h:mm' })
     setTime(time)
+    setFormat(format)
+    setTimeSystem(timeSystem)
   }
 
   useEffect(() => {
@@ -24,6 +29,16 @@ export function Time () {
   }, [])
   
   return (
-    <div className='fixed z-[99999] top-0 right-0 bg-black text-white p-1 px-2 flex'>{time}</div>
+    <article className='flex items-center gap-[3px]'>
+      <span className='tracking-tight'>
+        {time}
+      </span>
+      <span
+        className='text-xs pt-[2px]'
+        hidden={format === '24 hrs'}
+      >
+        {timeSystem}
+      </span>
+    </article>
   )
 }

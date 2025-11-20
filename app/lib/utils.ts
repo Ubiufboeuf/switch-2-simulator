@@ -1,5 +1,7 @@
 import type { Direction, LtvDirections, Point } from '~/env'
 import { BASE_TITLE, WEB_DESCRIPTION } from './constants/project_info'
+import { Temporal } from 'temporal-polyfill'
+import type { Output, ParsedTimestamp, ParseTimestampOptions, TimeSystem } from '~/types/uiTypes'
 
 export function createWebTitle (title: string = '') {
   return title ? `${title} - ${BASE_TITLE}` : BASE_TITLE
@@ -91,4 +93,41 @@ export function convertPointToDirection ({ x, y }: Point): Direction | undefined
   if (x < 0) return 'left'
   if (y > 0) return 'down'
   if (y < 0) return 'up'
+}
+
+function padStart (val: number, length: number, fill: string) { return val.toString().padStart(length, fill) }
+
+const DefaultTimestampOptions: ParseTimestampOptions = {
+  format: '12 hrs',
+  output: 'hh:mm'
+}
+
+export function parseTimestamp (timestampInMiliseconds: number, options: Partial<ParseTimestampOptions> = DefaultTimestampOptions): ParsedTimestamp {
+  const { format, output } = {
+    ...DefaultTimestampOptions,
+    ...options
+  }
+  
+  const instant = Temporal.Instant.fromEpochMilliseconds(timestampInMiliseconds)
+  const zdt = instant.toZonedDateTimeISO(Temporal.Now.timeZoneId())
+
+  let timeSystem: TimeSystem = null
+  let hour = zdt.hour
+  const minute = zdt.minute
+
+  if (format === '12 hrs') {
+    timeSystem = zdt.hour > 12 ? 'PM' : 'AM'
+    hour = hour - 12
+  }
+
+  const outputs: { [key in Output]: string } = {
+    'h:mm': `${hour}:${padStart(minute, 2, '0')}`,
+    'hh:mm': `${padStart(hour, 2, '0')}:${padStart(minute, 2, '0')}`
+  }
+
+  return {
+    time: outputs[output],
+    format,
+    timeSystem
+  }
 }
