@@ -68,7 +68,9 @@ export function findBoxToSelect ({ x, y }: Point) {
 
     const newSection = getSectionById(newSectionId)
     const box = getBoxById(newSection?.boxToReturn)
-    if (box) newBox = box
+    if (!box) return
+    
+    newBox = box
   }
   
   if (!newBox) return
