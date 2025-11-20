@@ -1,8 +1,8 @@
 import { web_description, createWebTitle } from '~/lib/utils'
 import type { Route } from './+types/home'
-import { SectionProfiles } from '~/components/home/SectionProfiles'
+import { Profiles } from '~/components/home/Profiles'
 import { useLoadMocks } from '~/hooks/useLoadMocks'
-import { SectionGames } from '~/components/home/SectionGames'
+import { Games } from '~/components/home/Games'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -16,8 +16,8 @@ export default function Home () {
   
   return (
     <>
-      <SectionProfiles />
-      <SectionGames />
+      <Profiles />
+      <Games />
     </>
   )
 }

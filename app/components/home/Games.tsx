@@ -1,6 +1,6 @@
 import { useUserStore } from '~/stores/useUserStore'
 
-export function SectionGames () {
+export function Games () {
   const user = useUserStore((state) => state.user)
   const currentGame = {
     title: 'Mario Kart 8 Deluxe'

@@ -2,7 +2,7 @@ import { Icon } from '../images/Icon'
 import { Avatar } from '../images/Avatar'
 import { useUserStore } from '~/stores/useUserStore'
 
-export function SectionProfiles () {
+export function Profiles () {
   const user = useUserStore((state) => state.user)
 
   return (
