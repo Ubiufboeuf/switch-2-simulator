@@ -13,10 +13,11 @@ type MapStore = {
 export const useMapStore = create<MapStore>((set) => ({
   items: [],
   setMap: (map) => set({ ...map }),
-  addItem: (item) => set(({ items }) => ({ items: { ...items, item } })),
+  addItem: (item) => set(({ items }) => ({ items: [...items, item] })),
   updateItem (id, section) {
     set(({ items }) => {
       const idx = items.findIndex((s) => s.id === id)
+      if (idx < 0) return {}
       return {
         items: items.toSpliced(idx, 1, section)
       }
