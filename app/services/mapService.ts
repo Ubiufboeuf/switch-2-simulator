@@ -56,6 +56,8 @@ function loadBox (item: Box, section: Section) {
 function loadSection (section: Section) {
   console.log('loadSection', section)
 
+  addSectionToMap(section)
+
   for (const box of section.items) {
     loadBox(box, section)
   }

@@ -4,6 +4,7 @@ import { useCursorStore } from '~/stores/useCursorStore'
 import { useMapStore } from '~/stores/useMapStore'
 import type { Box, CreateBoxProps } from '~/types/boxTypes'
 import type { Section } from '~/types/sectionTypes'
+import { getSectionByBoxId, getSectionById } from './sectionService'
 
 export function createBox (props?: CreateBoxProps): Box {
   const box: Box = {
@@ -57,10 +58,22 @@ export function findBoxToSelect ({ x, y }: Point) {
   if (!direction) return
   
   const newBoxId = selectedBox?.topology?.[direction]
-  const newBox = getBoxById(newBoxId)
+  let newBox = getBoxById(newBoxId)
+
+  // Si la caja no tiene topología, buscar por sección
+  if (!newBox) {
+    const section = getSectionByBoxId(selectedBoxId)
+    const newSectionId = section?.topology?.[direction]
+    if (!newSectionId) return
+
+    const newSection = getSectionById(newSectionId)
+    const box = getBoxById(newSection?.boxToReturn)
+    if (box) newBox = box
+  }
+  
   if (!newBox) return
-  
+
   setSelectedBox(newBox.id)
-  
+
   return getSelectedBox(items)
 }
