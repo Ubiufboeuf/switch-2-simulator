@@ -1,5 +1,4 @@
 import type { Point } from '~/env'
-import { BOX } from '~/lib/constants/constants'
 import { convertPointToDirection } from '~/lib/utils'
 import { useCursorStore } from '~/stores/useCursorStore'
 import { useMapStore } from '~/stores/useMapStore'
@@ -9,7 +8,7 @@ import type { Section } from '~/types/sectionTypes'
 export function createBox (props?: CreateBoxProps): Box {
   const box: Box = {
     id: props?.id ?? crypto.randomUUID(),
-    type: BOX,
+    type: 'box',
     selected: props?.selected,
     topology: props?.topology
   }
