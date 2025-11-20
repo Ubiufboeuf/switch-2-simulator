@@ -10,7 +10,6 @@ import { useSectionStore } from '~/stores/useSectionStore'
 
 export async function loadMap (pathname: string) {
   const state = useMapStore.getState()
-  if (state.map) return
 
   const { setMap } = state
 
