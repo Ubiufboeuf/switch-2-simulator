@@ -7,8 +7,7 @@ export function Profiles () {
 
   return (
     <section
-      className='visual-section absolute left-[27.5px] top-[47px] h-[35.75px] w-[120px] rounded-full flex gap-[6.5px]'
-      data-section-name='section-profiles'
+      className='absolute left-[27.5px] top-[47px] h-[35.75px] w-[120px] rounded-full flex gap-[6.5px]'
     >
       { user?.profiles.map(({ avatar }, idx) => (
         <article

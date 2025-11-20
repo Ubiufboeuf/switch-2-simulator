@@ -8,8 +8,7 @@ export function Games () {
 
   return (
     <section
-      className='visual-section absolute left-0 top-[106px] h-[180px] w-full flex flex-col gap-[6.5px] overflow-hidden'
-      data-section-name='section-game'
+      className='absolute left-0 top-[106px] h-[180px] w-full flex flex-col gap-[6.5px] overflow-hidden'
     >
       <h1
         className='absolute top-0 text-sm tracking-[-0.6px]'
