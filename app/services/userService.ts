@@ -36,7 +36,6 @@ export async function loadUser () {
 }
 
 export async function fetchUser (id: string): Promise<User | undefined> {
-  console.log(ENDPOINTS.USER)
   const res = await fetch(ENDPOINTS.USER)
   const user = await res.json()
   return user

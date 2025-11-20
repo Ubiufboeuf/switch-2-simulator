@@ -42,8 +42,6 @@ export async function fetchMap (pathname: string): Promise<Map | undefined> {
 }
 
 function loadBox (item: Box, section: Section) {
-  console.log('loadBox', item)
-
   const box = createBox(item)
   addBoxToSection(box, section)
 
@@ -54,8 +52,6 @@ function loadBox (item: Box, section: Section) {
 }
 
 function loadSection (section: Section) {
-  console.log('loadSection', section)
-
   addSectionToMap(section)
 
   for (const box of section.items) {
