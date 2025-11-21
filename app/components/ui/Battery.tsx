@@ -15,7 +15,7 @@ export function Battery () {
         activeBattery = await navigator.getBattery()        
         handleUpdate = () => {
           if (activeBattery) {
-            setBatteryLevel(activeBattery.level * 100)
+            setBatteryLevel(Math.round(activeBattery.level * 100))
           }
         }
 
