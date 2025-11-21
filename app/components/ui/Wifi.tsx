@@ -8,7 +8,7 @@ export function Wifi () {
   
   return (
     <article
-      className='absolute left-[59.5px] w-[21.5px] h-[14px] flex flex-col items-center justify-center overflow-visible'
+      className='h-[14px] flex flex-col items-center justify-center overflow-visible'
     >
       <Icon>
         <IconWifi level={rtt} />
