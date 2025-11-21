@@ -5,8 +5,6 @@ import { Icon } from '../images/Icon'
 // Sé que es WiFi, pero me cuesta escribir la segunda mayúscula rápido
 export function Wifi () {
   const rtt = useNetworkRtt()
-
-  console.log(rtt)
   
   return (
     <article
