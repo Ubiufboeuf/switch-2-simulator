@@ -62,12 +62,11 @@ body {
 
   #cursor-border-colors {
     background: conic-gradient(
-      #1180F4,
-      #CFFDFD,
-      #866fdb,
-      #1e77d6,
-      #ca8dbc,
-      #1180F4
+      #9966FF,
+      #FF66B8,
+      #6B66FF,
+      #66F2FF,
+      #9966FF
     );
     animation: spin 6s infinite linear;
   }
