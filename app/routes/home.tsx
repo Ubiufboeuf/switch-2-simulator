@@ -4,6 +4,7 @@ import { Profiles } from '~/components/home/Profiles'
 import { useLoadMocks } from '~/hooks/useLoadMocks'
 import { Games } from '~/components/home/Games'
 import { StatusBar } from '~/components/home/StatusBar'
+import { Navbar } from '~/components/home/Navbar'
 
 export function meta ({}: Route.MetaArgs) {
   return [
@@ -20,6 +21,7 @@ export default function Home () {
       <Profiles />
       <StatusBar />
       <Games />
+      <Navbar />
     </>
   )
 }
